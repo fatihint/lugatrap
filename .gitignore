@@ -1,0 +1,9 @@
+.idea/
+venv/
+__pycache__/
+.DS_Store
+nlp/nlp_eski.py
+config.py
+play.py
+results*.json
+notes.md
