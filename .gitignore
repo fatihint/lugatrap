@@ -6,4 +6,5 @@ nlp/nlp_eski.py
 config.py
 play.py
 results*.json
+lyrics*.json
 notes.md

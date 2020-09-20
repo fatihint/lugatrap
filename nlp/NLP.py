@@ -10,7 +10,7 @@ from .zemberek import morphology_pb2_grpc as z_morphology_g
 
 
 class NLP:
-    def __init__(self, input_list):
+    def __init__(self, input_list=[]):
         self.channel = grpc.insecure_channel('localhost:6789')
         self.langid_stub = z_langid_g.LanguageIdServiceStub(self.channel)
         self.normalization_stub = z_normalization_g.NormalizationServiceStub(self.channel)
@@ -31,8 +31,19 @@ class NLP:
         return self.morphology_stub.AnalyzeSentence(z_morphology.SentenceAnalysisRequest(input=i))
 
     def start(self):
+        blacklist = ['punc', 'unk']
+        lemmas_result = []
         for artist in self.input_list:
-            for song in artist.songs:
-                response = self.normalize(song.lyrics)
-                print(response)
-                break
+            if artist.name == 'mode xl':
+                for song in artist.songs:
+                    if song.title.lower() == 'sende yok gibi':
+                        response = self.normalize(song.lyrics)
+                        analysed_result = self.analyze(response.normalized_input)
+                        for a in analysed_result.results:
+                            best = a.best
+                            lemma = best.lemmas[-1]
+                            if best.pos.lower() not in blacklist:
+                                lemmas_result.append(best.dictionaryItem.lemma.lower())
+                            print("Word = " + a.token + ", Lemmas = " + lemma + ", POS = [" + best.pos + "], Full Analysis = {" + best.analysis + "}")
+                        break
+        print(set(lemmas_result))

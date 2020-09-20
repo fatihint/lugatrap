@@ -1,30 +1,38 @@
 import sys
+import argparse
 from app import App
-from utils import Utils
 
 
 def main():
-    if len(sys.argv) < 2:
-        if Utils.file_exists('artists.json'):
-            input_file = 'artists.json'
-        else:
-            print('Usage: main.py input_file.json output_file.json')
-            return
-    else:
-        input_file_arg = sys.argv[1]
-        if input_file_arg.split('.')[-1] != 'json':
-            print('Input file extension has to be json...')
-            return
-        else:
-            if Utils.file_exists(input_file_arg):
-                input_file = input_file_arg
-            else:
-                print('File not found...')
-                return
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-l', metavar='artists.json', help='Scrape the lyrics of given artists.')
+    parser.add_argument('-a', metavar='lyrics.json', help='Analyze the given lyrics.')
+    args = parser.parse_args()
 
-    app = App(input_file)
-    app.start()
-    app.analyze()
+    art, res = args.l, args.a
+
+    artists_input = lyrics_input = ''
+
+    if not art and not res:
+        artists_input = 'artists.json'
+        lyrics_input = 'lyrics.json'
+    else:
+        if art:
+            artists_input = art
+            if res:
+                lyrics_input = res
+        elif res:
+            lyrics_input = res
+
+    print('Artist input:', artists_input)
+    print('Analyze input:', lyrics_input, '\n')
+
+    app = App()
+    if artists_input:
+        app.lyrics(artists_input, lyrics_input)
+    if lyrics_input:
+        app.analyze(lyrics_input)
+
     sys.exit(0)
 
 

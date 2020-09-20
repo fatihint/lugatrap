@@ -9,45 +9,54 @@ from utils import Utils
 
 
 class App:
-    results_file = 'results.json'
 
-    def __init__(self, input_file):
-        self.input_file = input_file
+    def __init__(self):
         self.results = {'results': []}
         self.artist_list = []  # Names string
         self.artists = []  # Artist objects list
         self.artist_list_genius = []
         self.artist_list_salt = []
 
-    def start(self):
-        self.parse_artists()
-        self.parse_results()
+    def lyrics(self, artists_input, lyrics_input):
+        self.parse_artists(artists_input)
+        self.parse_results(lyrics_input)
         self.divide_artist_sources()
-        self.scrape()
+        self.scrape(lyrics_input)
 
-    def parse_artists(self):
+    def parse_artists(self, artists_input):
         """
         Parse input file and create Artist objects with names in the file.
         """
         try:
-            with open(self.input_file) as f:
+            flag = 0
+            with open(artists_input) as f:
                 data = json.load(f)
                 for artist in data['artists']:
                     self.artist_list.append(artist)
         except FileNotFoundError:
-            print('File not found...')
-        finally:
+            print(f'Input file for artists: {artists_input} not found...')
+        except json.JSONDecodeError:
+            print('Input file for artists format has to be JSON!')
+        except Exception:
+            print('Invalid input file for artists...')
+        else:
+            flag = 1
             for artist in self.artist_list:
                 artist_obj = Artist(artist)
                 self.artists.append(artist_obj)
+        finally:
+            if flag != 1:
+                exit(0)
 
-    def parse_results(self):
+    def parse_results(self, lyrics_input):
         """
-        Parse output file (results) and .
+        Parse output file (results).
         """
-        if Utils.base_file_exists('results.json'):
+        if not lyrics_input:
+            lyrics_input = 'lyrics.json'
+        if Utils.base_file_exists(lyrics_input):
             try:
-                with open(Utils.get_base_file_path('results.json')) as f:
+                with open(Utils.get_base_file_path(lyrics_input)) as f:
                     try:
                         data = json.load(f, cls=ArtistDecoder)
                         self.results['results'] = data['results']
@@ -73,32 +82,35 @@ class App:
             if "salt" not in artist.source:
                 self.artist_list_salt.append(artist)
 
-        print('Genius: ')
+        if self.artist_list_genius:
+            print('Genius: ')
         for artist in self.artist_list_genius:
-            print(artist.name, end=', ')
-        print('\nSalt:')
+            print(artist.name)
+        if self.artist_list_salt:
+            print('\nSalt:')
         for artist in self.artist_list_salt:
-            print(artist.name, end=', ')
-        print('\n')
+            print(artist.name)
 
-    def scrape(self):
+    def scrape(self, lyrics_input):
         genius_api_client_access_token = config.keys['access_token']
         genius = Genius(genius_api_client_access_token)
         salt = SAlt()
 
-        print('Retrieving data from Genius...')
+        if self.artist_list_genius:
+            print('Retrieving data from Genius...')
         for artist in self.artist_list_genius:
             genius.get_data(artist)
             self.append(artist)
-            self.save()
-            print('saved..')
+            self.save(lyrics_input)
+            print('Saved.')
 
-        print('Retrieving data from Sarki Alternatifim...')
+        if self.artist_list_salt:
+            print('Retrieving data from Sarki Alternatifim...')
         for artist in self.artist_list_salt:
             salt.get_data(artist)
             self.append(artist)
-            self.save()
-            print('saved..')
+            self.save(lyrics_input)
+            print('Saved.')
 
     def append(self, artist):
         for result in self.results['results']:
@@ -108,19 +120,27 @@ class App:
         else:
             self.results['results'].append(artist)
 
-    def save(self):
+    def save(self, lyrics_input):
         try:
-            file = Utils.get_base_file_path(self.results_file)
+            file = Utils.get_base_file_path(lyrics_input)
             _json = json.dumps(self.results, cls=ArtistEncoder, indent=4, ensure_ascii=False)
             with open(file, 'w') as f:
                 f.write(_json)
-        except:
+        except Exception:
             print('Output file can not be created...')
 
-    def analyze(self):
-        nlp = NLP(self.results['results'])
-        nlp.start()
-        # self.results
+    def analyze(self, lyrics_input):
+        try:
+            with open(Utils.get_base_file_path(lyrics_input)) as f:
+                try:
+                    data = json.load(f, cls=ArtistDecoder)
+                    self.results['results'] = data['results']
+                    nlp = NLP(self.results['results'])
+                    results = nlp.start()
+                except json.JSONDecodeError:
+                    print('File to be analyzed is invalid..')
+        except FileNotFoundError:
+            print('Lyrics file to analyze not found...')
 
-    def get_artists(self):
-        return self.artists
+    # def get_artists(self):
+        # return self.artists
