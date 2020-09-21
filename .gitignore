@@ -7,4 +7,5 @@ config.py
 play.py
 results*.json
 lyrics*.json
+stats*.json
 notes.md

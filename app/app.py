@@ -1,7 +1,7 @@
 import json
 import config
-
-from models import Artist, ArtistDecoder, ArtistEncoder
+from itertools import islice
+from models import Artist, ArtistDecoder, ArtistEncoder, ArtistStats, ArtistStatsEncoder
 from data import Genius
 from data import SAlt
 from nlp import NLP
@@ -12,6 +12,7 @@ class App:
 
     def __init__(self):
         self.results = {'results': []}
+        self.stats = {'stats': []}
         self.artist_list = []  # Names string
         self.artists = []  # Artist objects list
         self.artist_list_genius = []
@@ -136,11 +137,29 @@ class App:
                     data = json.load(f, cls=ArtistDecoder)
                     self.results['results'] = data['results']
                     nlp = NLP(self.results['results'])
-                    results = nlp.start()
+                    self.stats = nlp.start()
+                    self.process_stats(self.stats)
                 except json.JSONDecodeError:
                     print('File to be analyzed is invalid..')
+                # except Exception:
+                    # print('GRPC server may not be running...')
         except FileNotFoundError:
             print('Lyrics file to analyze not found...')
 
-    # def get_artists(self):
-        # return self.artists
+    def process_stats(self, stats):
+        for s in stats['stats']:
+            s.analyzed_word_count = len(s.vocab)
+            s.unique_word_count = len(set(s.vocab))
+            s.calculate_top_ten()
+
+        self.save_stats()
+
+    def save_stats(self):
+        try:
+            file = Utils.get_base_file_path("stats.json")
+            _json = json.dumps(self.stats, cls=ArtistStatsEncoder, indent=4, ensure_ascii=False)
+            with open(file, 'w') as f:
+                f.write(_json)
+        except Exception:
+            print('Output file can not be created...')
+
