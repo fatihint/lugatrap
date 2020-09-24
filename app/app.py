@@ -1,6 +1,7 @@
 import json
 import config
-from models import Artist, ArtistDecoder, ArtistEncoder, ArtistStats, ArtistStatsEncoder, ArtistStatsDecoder
+
+from models import Artist, ArtistDecoder, ArtistEncoder, ArtistStatsEncoder, ArtistStatsDecoder
 from data import Genius
 from data import SAlt
 from nlp import NLP
@@ -9,14 +10,39 @@ from utils import Utils
 
 class App:
 
-    def __init__(self):
+    def __init__(self, artists_input_file, lyrics_result_file, stats_result_file):
+        self.artists_input_file = artists_input_file
+        self.lyrics_result_file = lyrics_result_file
+        self.stats_result_file = stats_result_file
+        self.artists = {'artists': []}
         self.results = {'results': []}
         self.stats = {'stats': []}
+
         self.artist_list = []  # Names string
         self.artists = []  # Artist objects list
         self.artist_list_genius = []
         self.artist_list_salt = []
         self.artists_to_analyze_list = []
+
+    def scrape(self, genius_api_token):
+        genius = Genius(genius_api_token)
+        salt = SAlt()
+
+        if self.artist_list_genius:
+            print('Retrieving data from Genius...')
+        for artist in self.artist_list_genius:
+            genius.get_data(artist)
+            self.append(artist)
+            self.save(lyrics_input)
+            print('Saved.')
+
+        if self.artist_list_salt:
+            print('Retrieving data from Sarki Alternatifim...')
+        for artist in self.artist_list_salt:
+            salt.get_data(artist)
+            self.append(artist)
+            self.save(lyrics_input)
+            print('Saved.')
 
     def lyrics(self, artists_input, lyrics_input):
         self.parse_artists(artists_input)
@@ -109,27 +135,6 @@ class App:
             print('\nSalt:')
         for artist in self.artist_list_salt:
             print(artist.name)
-
-    def scrape(self, lyrics_input):
-        genius_api_client_access_token = config.keys['access_token']
-        genius = Genius(genius_api_client_access_token)
-        salt = SAlt()
-
-        if self.artist_list_genius:
-            print('Retrieving data from Genius...')
-        for artist in self.artist_list_genius:
-            genius.get_data(artist)
-            self.append(artist)
-            self.save(lyrics_input)
-            print('Saved.')
-
-        if self.artist_list_salt:
-            print('Retrieving data from Sarki Alternatifim...')
-        for artist in self.artist_list_salt:
-            salt.get_data(artist)
-            self.append(artist)
-            self.save(lyrics_input)
-            print('Saved.')
 
     def append(self, artist):
         if artist.id in (result.id for result in self.results['results']):
