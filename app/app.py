@@ -1,7 +1,6 @@
 import json
 import config
-from itertools import islice
-from models import Artist, ArtistDecoder, ArtistEncoder, ArtistStats, ArtistStatsEncoder
+from models import Artist, ArtistDecoder, ArtistEncoder, ArtistStats, ArtistStatsEncoder, ArtistStatsDecoder
 from data import Genius
 from data import SAlt
 from nlp import NLP
@@ -17,6 +16,7 @@ class App:
         self.artists = []  # Artist objects list
         self.artist_list_genius = []
         self.artist_list_salt = []
+        self.artists_to_analyze_list = []
 
     def lyrics(self, artists_input, lyrics_input):
         self.parse_artists(artists_input)
@@ -26,10 +26,10 @@ class App:
 
     def parse_artists(self, artists_input):
         """
-        Parse input file and create Artist objects with names in the file.
+        Parse input file and create Artist objects.
         """
+        flag = 0
         try:
-            flag = 0
             with open(artists_input) as f:
                 data = json.load(f)
                 for artist in data['artists']:
@@ -37,7 +37,7 @@ class App:
         except FileNotFoundError:
             print(f'Input file for artists: {artists_input} not found...')
         except json.JSONDecodeError:
-            print('Input file for artists format has to be JSON!')
+            print('Artists input file is invalid.')
         except Exception:
             print('Invalid input file for artists...')
         else:
@@ -49,6 +49,25 @@ class App:
             if flag != 1:
                 exit(0)
 
+    def parse_stats(self, artists_input_from_lyrics):
+        """
+        Parse stats file and create ArtistStats objects.
+        """
+        file = Utils.get_base_file_path("stats.json")
+        try:
+            with open(file) as f:
+                data = json.load(f, cls=ArtistStatsDecoder)
+                self.stats['stats'] = data['stats']
+                for a in artists_input_from_lyrics:
+                    # for s in self.stats['stats']:
+                    #     print(s.__dict__)
+                    if a.name not in list(s.artist_name for s in self.stats['stats'] if type(s) != dict):
+                        self.artists_to_analyze_list.append(a)
+        except FileNotFoundError:
+            self.artists_to_analyze_list = artists_input_from_lyrics
+        except json.JSONDecodeError:
+            print('Stats file is invalid.')
+
     def parse_results(self, lyrics_input):
         """
         Parse output file (results).
@@ -58,13 +77,12 @@ class App:
         if Utils.base_file_exists(lyrics_input):
             try:
                 with open(Utils.get_base_file_path(lyrics_input)) as f:
-                    try:
-                        data = json.load(f, cls=ArtistDecoder)
-                        self.results['results'] = data['results']
-                    except json.JSONDecodeError:
-                        print('Results file is invalid..')
+                    data = json.load(f, cls=ArtistDecoder)
+                    self.results['results'] = data['results']
             except FileNotFoundError:
                 print('File not found...')
+            except json.JSONDecodeError:
+                print(f'Results file {lyrics_input} is invalid..')
 
     def divide_artist_sources(self):
         results = self.results['results']
@@ -114,10 +132,8 @@ class App:
             print('Saved.')
 
     def append(self, artist):
-        for result in self.results['results']:
-            if result.id == artist.id:
-                result = artist
-                break
+        if artist.id in (result.id for result in self.results['results']):
+            result = artist
         else:
             self.results['results'].append(artist)
 
@@ -128,21 +144,26 @@ class App:
             with open(file, 'w') as f:
                 f.write(_json)
         except Exception:
-            print('Output file can not be created...')
+            print(f'Output file {lyrics_input} can not be created...')
 
     def analyze(self, lyrics_input):
         try:
             with open(Utils.get_base_file_path(lyrics_input)) as f:
                 try:
                     data = json.load(f, cls=ArtistDecoder)
-                    self.results['results'] = data['results']
-                    nlp = NLP(self.results['results'])
-                    self.stats = nlp.start()
-                    self.process_stats(self.stats)
+                    stats = data['results']
+                    self.parse_stats(stats)
+                    if self.artists_to_analyze_list:
+                        nlp = NLP(self.artists_to_analyze_list)
+                        new_stats = nlp.start()
+                        processed_new_stats = self.process_stats(new_stats)
+                        self.stats['stats'].append(processed_new_stats)
+                    self.save_stats()
+
                 except json.JSONDecodeError:
                     print('File to be analyzed is invalid..')
                 # except Exception:
-                    # print('GRPC server may not be running...')
+                #     print('GRPC server may not be running...')
         except FileNotFoundError:
             print('Lyrics file to analyze not found...')
 
@@ -151,8 +172,7 @@ class App:
             s.analyzed_word_count = len(s.vocab)
             s.unique_word_count = len(set(s.vocab))
             s.calculate_top_ten()
-
-        self.save_stats()
+        return stats
 
     def save_stats(self):
         try:

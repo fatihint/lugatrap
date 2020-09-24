@@ -50,8 +50,6 @@ class Artist(object):
             a += 'Title: ' + song.title
             if i > len(self.songs) - 3:
                 a += '\n' + song.lyrics
-            # a += 'URL: ' + song.url + '\n'
-            # a += 'Lyrics: ' + song.lyrics + '\n'
         return a
 
 
