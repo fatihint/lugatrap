@@ -38,12 +38,13 @@ class Utils:
         return 'genius_api_token' in config and config['genius_api_token']
 
     @staticmethod
-    def is_json_file_valid(*args, first_key):
+    def is_json_file_valid(*files, first_key):
         try:
-            with open(file) as f:
-                data = json.load(f)
-                if first_key in data:
-                    print(data)
+            for file in files:
+                with open(file) as f:
+                    data = json.load(f)
+                    if first_key in data:
+                        print(data)
         except json.JSONDecodeError as e:
             print(f'{e}')
             return False
@@ -51,14 +52,36 @@ class Utils:
             return True
 
     @staticmethod
-    def scrape_validation(artists_input_file):
-        error = ''
-        if Utils.is_token_valid():
-            if Utils.file_exists(artists_input_file):
-                if Utils.is_json_file_valid(artists_input_file, 'artists'):
-                    return error
+    def scrape_validation():
+        errors = []
+        keys = {'artists': 'artists_input_file', 'lyrics': 'lyrics_result_file'}
+        try:
+            if Utils.is_token_valid():
+                for json_key, config_key in keys.items():
+                    with open(config[config_key]) as f:
+                        data = json.load(f)
+                        try:
+                            if not type(data[json_key]) == list:
+                                errors.append(f'Error: key {json_key} in the {config[config_key]} file has a non-list value')
+                        except KeyError as e:
+                            errors.append(f'Error: file {config[config_key]} is missing the key: {json_key}')
             else:
-                error = f'Error: {artists_input_file} does not exist!'
-        else:
-            error = 'Error: please specify your Genius API token in the config file!'
-        return error
+                errors.append('Error: please specify your Genius API token in the config file!')
+        except KeyError as e:
+            errors.append(f'Error: config.py file missing the key: {e}!')
+        except FileNotFoundError as e:
+            errors.append(f'Error: file {config[config_key]} is not found for {config_key}')
+        except json.JSONDecodeError as e:
+            errors.append(f'Error: JSON file is invalid')
+        finally:
+            return errors
+
+    @staticmethod
+    def analyze_validation():
+        errors = []
+        return errors
+
+    @staticmethod
+    def get_config_values(*keys):
+        return {key.split('_')[0]: config[key] for key in keys}
+        # return [config[key] for key in keys]

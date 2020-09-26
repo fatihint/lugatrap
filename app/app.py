@@ -10,7 +10,7 @@ from utils import Utils
 
 class App:
 
-    def __init__(self, artists_input_file, lyrics_result_file, stats_result_file):
+    def __init__(self, artists_input_file='', lyrics_result_file='', stats_result_file=''):
         self.artists_input_file = artists_input_file
         self.lyrics_result_file = lyrics_result_file
         self.stats_result_file = stats_result_file
@@ -24,7 +24,7 @@ class App:
         self.artist_list_salt = []
         self.artists_to_analyze_list = []
 
-    def scrape(self, genius_api_token):
+    def scrape(self, genius_api_token, a):
         genius = Genius(genius_api_token)
         salt = SAlt()
 
@@ -151,7 +151,7 @@ class App:
         except Exception:
             print(f'Output file {lyrics_input} can not be created...')
 
-    def analyze(self, lyrics_input):
+    def analyze(self, lyrics_input, a):
         try:
             with open(Utils.get_base_file_path(lyrics_input)) as f:
                 try:

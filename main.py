@@ -1,5 +1,6 @@
 import sys
 import argparse
+
 from app import App
 from config import config
 from utils import Utils
@@ -11,36 +12,28 @@ def main():
     parser.add_argument('-a', action='store_true', help='Analyze the given lyrics.')
     args = parser.parse_args()
 
-    try:
-        artists_input_file = config['artists_input_file']
-        lyrics_result_file = config['lyrics_result_file']
-        stats_result_file = config['stats_result_file']
-    except KeyError as e:
-        print(f'Error: config.py file missing the key: {e}!')
-        return
-    else:
-        scrape, analyze = args.l, args.a
-        app = App(artists_input_file, lyrics_result_file, stats_result_file)
-        if not scrape and not analyze:
-            # When no arguments given, default behaviour: both scrape and analyze
-            error = Utils.scrape_validation(artists_input_file)
-            if not error:
-                # app.scrape(config["genius_api_token"])
-                # app.analyze("")
-                print('no errors, good to go')
-            else:
-                print(f'{error}')
-                return
+    scrape, analyze = args.l, args.a
+    app = App()
+
+    if not scrape and not analyze:
+        # All 3 keys are needed.
+        scrape_validation_errors = Utils.scrape_validation()
+        analyze_validation_errors = Utils.analyze_validation()
+
+        if not scrape_validation_errors and not analyze_validation_errors:
+            values = Utils.get_config_values("artists_input_file", 'lyrics_result_file', 'stats_result_file')
+            app.scrape(values['artists'], values['lyrics'])
+            app.analyze(values['lyrics'], values['stats'])
         else:
-            # When at least one argument is provided.
-            if scrape:
-                if Utils.is_token_valid():
-                    app.scrape(config['genius_api_token'])
-                else:
-                    print('Please specify your Genius API token in the config file!')
-                    return
-            if analyze:
-                app.analyze('')
+            for error in scrape_validation_errors + analyze_validation_errors:
+                print(error)
+    else:
+        if scrape:
+            values = Utils.get_config_values('artists_input_file', 'lyrics_result_file')
+            app.scrape(values)
+        if analyze:
+            values = Utils.get_config_values('lyrics_result_file', 'stats_result_file')
+            app.analyze(values)
 
     sys.exit(0)
 
