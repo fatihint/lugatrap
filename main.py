@@ -1,8 +1,8 @@
 import sys
 import argparse
 
-from app import App
 from config import config
+from app import App
 from utils import Utils
 
 
@@ -16,7 +16,7 @@ def main():
         scrape_validation_errors = Utils.scrape_validation()
         if not scrape_validation_errors:
             values = Utils.get_config_values('artists_input_file', 'lyrics_result_file')
-            app.scrape(values['artists'], values['lyrics'])
+            app.scrape(token=config['genius_api_token'], artists_input=values['artists'], lyrics_result=values['lyrics'])
         else:
             for error in scrape_validation_errors:
                 print(error)
@@ -26,7 +26,7 @@ def main():
         analyze_validation_errors = Utils.analyze_validation()
         if not analyze_validation_errors:
             values = Utils.get_config_values('lyrics_result_file', 'stats_result_file')
-            app.analyze(values['lyrics'], values['stats'])
+            app.analyze(lyrics_result=values['lyrics'], stats_result=values['stats'])
         else:
             for error in analyze_validation_errors:
                 print(error)

@@ -24,8 +24,8 @@ class App:
         self.artist_list_salt = []
         self.artists_to_analyze_list = []
 
-    def scrape(self, genius_api_token, a):
-        genius = Genius(genius_api_token)
+    def scrape(self, token, artists_input, lyrics_result):
+        genius = Genius(token)
         salt = SAlt()
 
         if self.artist_list_genius:
@@ -151,7 +151,7 @@ class App:
         except Exception:
             print(f'Output file {lyrics_input} can not be created...')
 
-    def analyze(self, lyrics_input, a):
+    def analyze(self, lyrics_result, stats_result):
         try:
             with open(Utils.get_base_file_path(lyrics_input)) as f:
                 try:

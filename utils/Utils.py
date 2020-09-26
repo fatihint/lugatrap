@@ -27,29 +27,9 @@ class Utils:
         return Utils.file_exists(Utils.get_base_file_path(file_name))
 
     @staticmethod
-    def is_file_json(*args):
-        for file in args:
-            if os.path.splitext(file)[1][1:].strip().lower() != 'json':
-                return False
-        return True
-
-    @staticmethod
     def is_token_valid():
         return 'genius_api_token' in config and config['genius_api_token']
 
-    @staticmethod
-    def is_json_file_valid(*files, first_key):
-        try:
-            for file in files:
-                with open(file) as f:
-                    data = json.load(f)
-                    if first_key in data:
-                        print(data)
-        except json.JSONDecodeError as e:
-            print(f'{e}')
-            return False
-        else:
-            return True
 
     @staticmethod
     def scrape_validation():
@@ -84,4 +64,3 @@ class Utils:
     @staticmethod
     def get_config_values(*keys):
         return {key.split('_')[0]: config[key] for key in keys}
-        # return [config[key] for key in keys]
