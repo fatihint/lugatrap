@@ -8,14 +8,17 @@ from models import Song
 
 class Genius:
     _BASE_API_URL = 'https://api.genius.com'
-    api_headers = {}
+    _api_headers = {}
 
     def __init__(self, api_token, artists_to_scrape):
-        self._client_token = client_token
-        self.api_headers['Authorization'] = 'Bearer ' + self._client_token
-        self.results = {'results': []}
+        self._api_token = api_token
+        self._artists_to_scrape = artists_to_scrape
+        self._api_headers['Authorization'] = 'Bearer ' + self._api_token
 
-    def get_data(self, artist):
+    def get_data(self):
+        for artist in self._artists_to_scrape:
+            self.find_artist(artist)
+
         try:
             self.find_artist(artist)
             if artist.id == -1:
@@ -64,7 +67,7 @@ class Genius:
                 song.lyrics = Lyrics.sanitize(lyrics)
 
     def get_json_response(self, url):
-        response = requests.get(url, headers=self.api_headers)
+        response = requests.get(url, headers=self._api_headers)
         return json.loads(response.text)['response']
 
     def get_artist_id(self, artist, items):

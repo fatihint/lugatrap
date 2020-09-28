@@ -36,6 +36,7 @@ class App:
             salt = SAlt(artists_to_scrape=salt_artists)
             salt.get_data()
 
+
         # if self.artist_list_genius:
         #     print('Retrieving data from Genius...')
         # for artist in self.artist_list_genius:
