@@ -10,7 +10,7 @@ class Genius:
     _BASE_API_URL = 'https://api.genius.com'
     api_headers = {}
 
-    def __init__(self, client_token):
+    def __init__(self, api_token, artists_to_scrape):
         self._client_token = client_token
         self.api_headers['Authorization'] = 'Bearer ' + self._client_token
         self.results = {'results': []}

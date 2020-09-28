@@ -8,7 +8,7 @@ class SAlt():
     _BASE_URL = 'https://sarki.alternatifim.com'
     id = 1
 
-    def __init__(self):
+    def __init__(self, artists_to_scrape):
         self.results = {'results': []}
         self.artist_name_url_map = {}
 

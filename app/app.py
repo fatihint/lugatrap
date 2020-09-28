@@ -24,26 +24,33 @@ class App:
         self.data['lyrics'] = self.parse_lyrics(lyrics_result)
 
         artists_to_scrape = self.divide_artist_sources()
-        print('scraper:', [x.name for art in artists_to_scrape.values() for x in art])
+        genius_artists, salt_artists = artists_to_scrape['genius'], artists_to_scrape['salt']
 
-        genius = Genius(token)
-        salt = SAlt()
-
-        if self.artist_list_genius:
+        if genius_artists:
             print('Retrieving data from Genius...')
-        for artist in self.artist_list_genius:
-            genius.get_data(artist)
-            self.append(artist)
-            self.save(lyrics_input)
-            print('Saved.')
+            genius = Genius(api_token=token, artists_to_scrape=genius_artists)
+            genius.get_data()
 
-        if self.artist_list_salt:
+        if salt_artists:
             print('Retrieving data from Sarki Alternatifim...')
-        for artist in self.artist_list_salt:
-            salt.get_data(artist)
-            self.append(artist)
-            self.save(lyrics_input)
-            print('Saved.')
+            salt = SAlt(artists_to_scrape=salt_artists)
+            salt.get_data()
+
+        # if self.artist_list_genius:
+        #     print('Retrieving data from Genius...')
+        # for artist in self.artist_list_genius:
+        #     genius.get_data(artist)
+        #     self.append(artist)
+        #     self.save(lyrics_input)
+        #     print('Saved.')
+        #
+        # if self.artist_list_salt:
+        #     print('Retrieving data from Sarki Alternatifim...')
+        # for artist in self.artist_list_salt:
+        #     salt.get_data(artist)
+        #     self.append(artist)
+        #     self.save(lyrics_input)
+        #     print('Saved.')
 
     def lyrics(self, artists_input, lyrics_input):
         self.parse_artists(artists_input)
