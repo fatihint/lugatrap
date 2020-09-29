@@ -29,29 +29,12 @@ class App:
         if genius_artists:
             print('Retrieving data from Genius...')
             genius = Genius(api_token=token, artists_to_scrape=genius_artists)
-            genius.get_data()
+            # genius_data = genius.get_data()
 
         if salt_artists:
             print('Retrieving data from Sarki Alternatifim...')
             salt = SAlt(artists_to_scrape=salt_artists)
-            salt.get_data("s")
-
-
-        # if self.artist_list_genius:
-        #     print('Retrieving data from Genius...')
-        # for artist in self.artist_list_genius:
-        #     genius.get_data(artist)
-        #     self.append(artist)
-        #     self.save(lyrics_input)
-        #     print('Saved.')
-        #
-        # if self.artist_list_salt:
-        #     print('Retrieving data from Sarki Alternatifim...')
-        # for artist in self.artist_list_salt:
-        #     salt.get_data(artist)
-        #     self.append(artist)
-        #     self.save(lyrics_input)
-        #     print('Saved.')
+            salt_data = salt.get_data()
 
     def lyrics(self, artists_input, lyrics_input):
         self.parse_artists(artists_input)
