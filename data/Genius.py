@@ -16,28 +16,22 @@ class Genius:
         self._api_headers['Authorization'] = 'Bearer ' + self._api_token
 
     def get_data(self):
-        for artist in self._artists_to_scrape:
-            self.find_artist(artist)
-
         try:
-            self.find_artist(artist)
-            if artist.id == -1:
-                print('{} could not be found on Genius...'.format(artist.name))
-            else:
-                print('Retrieving data for {}'.format(artist.name))
-                artist.source = ['genius']
-                self.get_songs(artist)
-                self.results['results'].append(artist)
+            for artist in self._artists_to_scrape:
+                if self.artist_exists(artist):
+                    print(f'Retrieving data for {artist.name}')
         except:
-            print('Something went wrong...')
+            print('lolexc')
 
-    def find_artist(self, artist):
-        search_url = Genius._BASE_API_URL + '/search?q='
-        response = self.get_json_response(search_url + artist.name)['hits']
+    def artist_exists(self, artist):
+        search_url = f'{Genius._BASE_API_URL}/search?q={artist.name}'
+        response = self.get_json_response(search_url)['hits']
         if response:
-            self.get_artist_id(artist, response)
-        else:
-            artist.id = -1
+            for item in response:
+                if item['result']['primary_artist'].lower() == artist.name:
+                    artist.id = item['result']['primary_artist']['id']
+                    return True
+        return False
 
     def get_songs(self, artist):
         songs_url = Genius._BASE_API_URL + '/artists/'
@@ -67,17 +61,13 @@ class Genius:
                 song.lyrics = Lyrics.sanitize(lyrics)
 
     def get_json_response(self, url):
-        response = requests.get(url, headers=self._api_headers)
-        return json.loads(response.text)['response']
-
-    def get_artist_id(self, artist, items):
-        for item in items:
-            artist_in_results = item['result']['primary_artist']
-            if artist.name == artist_in_results['name'].lower():
-                artist.id = artist_in_results['id']
-                break
-        else:
-            artist.id = -1
+        try:
+            response = requests.get(url, headers=self._api_headers)
+            return json.loads(response.text)['response']
+        except requests.exceptions.ConnectionError:
+            print('Error: Please check your internet connection...')
+        except Exception:
+            print('Error: Something went wrong...')
 
     def get_results(self):
         return self.results

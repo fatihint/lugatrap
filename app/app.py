@@ -34,7 +34,7 @@ class App:
         if salt_artists:
             print('Retrieving data from Sarki Alternatifim...')
             salt = SAlt(artists_to_scrape=salt_artists)
-            salt.get_data()
+            salt.get_data("s")
 
 
         # if self.artist_list_genius:
