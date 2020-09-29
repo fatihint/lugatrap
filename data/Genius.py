@@ -20,7 +20,9 @@ class Genius:
             for artist in self._artists_to_scrape:
                 if self.artist_exists(artist):
                     print(f'Retrieving data for {artist.name}')
-        except:
+                    self.get_songs(artist)
+                    print(artist)
+        except Exception:
             print('lolexc')
 
     def artist_exists(self, artist):
@@ -34,12 +36,11 @@ class Genius:
         return False
 
     def get_songs(self, artist):
-        songs_url = Genius._BASE_API_URL + '/artists/'
         page = 1
         song_list = []
         while page:
-            url = songs_url + str(artist.id) + '/songs?per_page=40&page=' + str(page)
-            response = self.get_json_response(url)
+            songs_url = f'{Genius._BASE_API_URL}/artists/{artist.id}/songs?per_page=40&page={page}'
+            response = self.get_json_response(songs_url)
             r_songs = response['songs']
             page = response['next_page']
             for r_song in r_songs:
@@ -71,5 +72,3 @@ class Genius:
 
     def get_results(self):
         return self.results
-
-
