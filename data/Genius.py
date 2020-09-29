@@ -17,20 +17,22 @@ class Genius:
 
     def get_data(self):
         try:
+            results = []
             for artist in self._artists_to_scrape:
                 if self.artist_exists(artist):
                     print(f'Retrieving data for {artist.name}')
                     self.get_songs(artist)
-                    print(artist)
+                    results.append(artist)
+            return results
         except Exception:
-            print('lolexc')
+            print('Error: Something went wrong...')
 
     def artist_exists(self, artist):
         search_url = f'{Genius._BASE_API_URL}/search?q={artist.name}'
         response = self.get_json_response(search_url)['hits']
         if response:
             for item in response:
-                if item['result']['primary_artist'].lower() == artist.name:
+                if item['result']['primary_artist']['name'].lower() == artist.name:
                     artist.id = item['result']['primary_artist']['id']
                     return True
         return False
@@ -67,8 +69,6 @@ class Genius:
             return json.loads(response.text)['response']
         except requests.exceptions.ConnectionError:
             print('Error: Please check your internet connection...')
-        except Exception:
-            print('Error: Something went wrong...')
 
     def get_results(self):
         return self.results
