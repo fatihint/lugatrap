@@ -76,3 +76,7 @@ class Lyrics:
             if el in title:
                 return False
         return True
+
+    @staticmethod
+    def sanitize_artist_name(name):
+        return Lyrics.remove_redundant_spaces(name).lower()

@@ -5,7 +5,7 @@ from models import Artist, ArtistDecoder, ArtistEncoder, ArtistStatsEncoder, Art
 from data import Genius
 from data import SAlt
 from nlp import NLP
-from utils import Utils
+from utils import Utils, Lyrics
 
 
 class App:
@@ -48,8 +48,7 @@ class App:
         with open(artists_input) as f:
             data = json.load(f)
             for artist_name in data['artists']:
-                artists_list.append(Artist(artist_name))
-
+                artists_list.append(Artist(Lyrics.sanitize_artist_name(artist_name)))
         return artists_list
 
     def parse_lyrics(self, lyrics_result):
@@ -92,7 +91,7 @@ class App:
         lyrics_result = {a.name: a.source for a in lyrics}
         # TODO: artistleri lyrics result dosyasina kaydederken sanitize
         for a in artists:
-            if a.name.lower() not in lyrics_result:
+            if a.name not in lyrics_result:
                 artists_to_scrape['genius'].append(a)
                 artists_to_scrape['salt'].append(a)
             else:

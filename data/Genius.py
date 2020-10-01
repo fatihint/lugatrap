@@ -48,7 +48,7 @@ class Genius:
             for r_song in r_songs:
                 if artist.name == r_song['primary_artist']['name'].lower():
                     if Lyrics.is_genius_title_valid(r_song):
-                        song_obj = Song(title=r_song['title'], artist_id=artist.id, url=r_song['url'])
+                        song_obj = Song(title=Lyrics.sanitize_title(r_song['title']), artist_id=artist.id, url=r_song['url'])
                         song_list.append(song_obj)
                         artist.songs = song_list
                         self.get_song_lyrics(song_obj)

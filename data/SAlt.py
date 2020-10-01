@@ -41,7 +41,7 @@ class SAlt():
             return True
 
     def get_songs(self, artist):
-        songs_current = list(map(lambda s: Lyrics.sanitize_title(s.title), artist.songs))
+        current_songs_title = list(map(lambda s: s.title, artist.songs))
         page = 1
         while page:
             url = self.artist_name_url_map[artist.name]
@@ -58,7 +58,7 @@ class SAlt():
                     a = title.find('a')
                     if not isinstance(a, int):  # there are integers between <a> elements
                         title_ = Lyrics.sanitize_title(a.text)
-                        if title_ not in songs_current and Lyrics.is_salt_title_valid(a.text):
+                        if title_ not in current_songs_title and Lyrics.is_salt_title_valid(a.text):
                             song_url = f'{SAlt._BASE_URL}{a["href"]}'
                             text = Lyrics.remove_redundant_spaces(a.text)
                             song_obj = Song(title=text, artist_id=artist.id, url=song_url)
@@ -75,7 +75,6 @@ class SAlt():
                 final.append(lyric)
         final = ' '.join(final)
         final = Lyrics.sanitize(final)
-
         song.lyrics = final
 
     def get_html_response(self, url):
