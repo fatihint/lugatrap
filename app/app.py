@@ -25,22 +25,20 @@ class App:
 
         artists_to_scrape = self.divide_artist_sources()
         genius_artists, salt_artists = artists_to_scrape['genius'], artists_to_scrape['salt']
+        genius_data = []
+        salt_data = []
 
         if genius_artists:
             print('Retrieving data from Genius...')
             genius = Genius(api_token=token, artists_to_scrape=genius_artists)
-            # genius_data = genius.get_data()
+            genius_data = genius.get_data()
+            self.append(genius_data)
 
         if salt_artists:
             print('Retrieving data from Sarki Alternatifim...')
-            salt = SAlt(artists_to_scrape=salt_artists)
+            salt = SAlt(artists_to_scrape=salt_artists, current_lyrics=genius_data)
             salt_data = salt.get_data()
-
-    def lyrics(self, artists_input, lyrics_input):
-        self.parse_artists(artists_input)
-        self.parse_results(lyrics_input)
-        self.divide_artist_sources()
-        self.scrape(lyrics_input)
+            self.append(salt_data)
 
     def parse_artists(self, artists_input):
         """
@@ -104,11 +102,17 @@ class App:
                     artists_to_scrape['salt'].append(a)
         return artists_to_scrape
 
-    def append(self, artist):
-        if artist.id in (result.id for result in self.results['results']):
-            result = artist
-        else:
-            self.results['results'].append(artist)
+    def append(self, data):
+        current_names = [artist.name for artist in self.data['lyrics']]
+
+        for artist in data:
+            if artist.name not in current_names.keys():
+                self.data['lyrics'].append(artist)
+            else:
+                for a in self.data['lyrics']:
+                    if artist.name == a.name:
+                        a.source.append(artist.source)
+                        a.songs.append(artist.songs)
 
     def save(self, lyrics_input):
         try:

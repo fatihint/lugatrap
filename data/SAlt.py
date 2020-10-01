@@ -8,30 +8,22 @@ class SAlt():
     _BASE_URL = 'https://sarki.alternatifim.com'
     id = 1
 
-    def __init__(self, artists_to_scrape):
+    def __init__(self, artists_to_scrape, current_lyrics):
         self._artists_to_scrape = artists_to_scrape
-        # self.results = {'results': []}
+        self._current_lyrics = current_lyrics
         self.artist_name_url_map = {}
 
     def get_data(self):
-        # try:
-        results = []
-        for artist in self._artists_to_scrape:
-            if self.artist_exists(artist):
-                print(f'Retrieving data for {artist.name}')
-                self.get_songs(artist)
-                results.append(artist)
-        return results
-
-        # self.find_artist(artist)
-        # if "salt" not in artist.source:
-        #     print('{} could not be found on Sarki Alternatifim...'.format(artist.name))
-        # else:
-        #     print('Retrieving data for {}'.format(artist.name))
-        #     self.get_songs(artist)
-        #     self.results['results'].append(artist)
-        # except:
-        #     print('Something went wrong...')
+        try:
+            results = []
+            for artist in self._artists_to_scrape:
+                if self.artist_exists(artist):
+                    print(f'Retrieving data for {artist.name}')
+                    self.get_songs(artist)
+                    results.append(artist)
+            return results
+        except Exception:
+            print('Error: Something went wrong...')
 
     def artist_exists(self, artist):
         artist_url = f'{SAlt._BASE_URL}/sarkici/{Lyrics.salt_artist_url(artist.name)}'
