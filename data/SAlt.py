@@ -20,6 +20,7 @@ class SAlt():
                 if self.artist_exists(artist):
                     print(f'Retrieving data for {artist.name}')
                     self.get_songs(artist)
+                    artist.source = ['salt']
                     results.append(artist)
             return results
         except Exception:
@@ -41,7 +42,7 @@ class SAlt():
             return True
 
     def get_songs(self, artist):
-        current_songs_title = list(map(lambda s: s.title, artist.songs))
+        current_songs_title = [song.title for artist in self._current_lyrics for song in artist.songs]
         page = 1
         while page:
             url = self.artist_name_url_map[artist.name]

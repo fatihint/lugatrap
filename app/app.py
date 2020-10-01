@@ -12,10 +12,6 @@ class App:
 
     def __init__(self):
         self.data = {'artists': [], 'lyrics': [], 'stats': []}
-        self.artist_list = []  # Names string
-        self.artists = []  # Artist objects list
-        self.artist_list_genius = []
-        self.artist_list_salt = []
         self.artists_to_analyze_list = []
 
     def scrape(self, token, artists_input, lyrics_result):
@@ -28,17 +24,19 @@ class App:
         genius_data = []
         salt_data = []
 
-        if genius_artists:
-            print('Retrieving data from Genius...')
-            genius = Genius(api_token=token, artists_to_scrape=genius_artists)
-            genius_data = genius.get_data()
-            self.append(genius_data)
+        # if genius_artists:
+        #     print('Retrieving data from Genius...')
+        #     genius = Genius(api_token=token, artists_to_scrape=genius_artists)
+        #     genius_data = genius.get_data()
+        #     self.append(genius_data)
 
-        if salt_artists:
-            print('Retrieving data from Sarki Alternatifim...')
-            salt = SAlt(artists_to_scrape=salt_artists, current_lyrics=genius_data)
-            salt_data = salt.get_data()
-            self.append(salt_data)
+        # if salt_artists:
+        #     print('Retrieving data from Sarki Alternatifim...')
+        #     salt = SAlt(artists_to_scrape=salt_artists, current_lyrics=genius_data)
+        #     salt_data = salt.get_data()
+        #     self.append(salt_data)
+
+        self.save_lyrics(lyrics_result)
 
     def parse_artists(self, artists_input):
         """
@@ -103,24 +101,20 @@ class App:
 
     def append(self, data):
         current_names = [artist.name for artist in self.data['lyrics']]
-
+        lyrics = self.data['lyrics']
         for artist in data:
-            if artist.name not in current_names.keys():
+            if artist.name not in current_names:
                 self.data['lyrics'].append(artist)
             else:
-                for a in self.data['lyrics']:
+                for a in lyrics:
                     if artist.name == a.name:
                         a.source.append(artist.source)
                         a.songs.append(artist.songs)
 
-    def save(self, lyrics_input):
-        try:
-            file = Utils.get_base_file_path(lyrics_input)
-            _json = json.dumps(self.results, cls=ArtistEncoder, indent=4, ensure_ascii=False)
-            with open(file, 'w') as f:
-                f.write(_json)
-        except Exception:
-            print(f'Output file {lyrics_input} can not be created...')
+    def save_lyrics(self, lyrics_result):
+        _json = json.dumps(self.data['lyrics'], cls=ArtistEncoder, indent=4, ensure_ascii=False)
+        with open(lyrics_result, 'w') as f:
+            f.write(_json)
 
     def analyze(self, lyrics_result, stats_result):
         pass

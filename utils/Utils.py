@@ -37,14 +37,16 @@ class Utils:
         keys = {'artists': 'artists_input_file', 'lyrics': 'lyrics_result_file'}
         try:
             if Utils.is_token_valid():
-                for json_key, config_key in keys.items():
-                    with open(config[config_key]) as f:
-                        data = json.load(f)
-                        try:
+                try:
+                    for json_key, config_key in keys.items():
+                        with open(config[config_key]) as f:
+                            data = json.load(f)
+                            print('anananianina', data[json_key])
                             if not type(data[json_key]) == list:
                                 errors.append(f'Error: key {json_key} in the {config[config_key]} file has a non-list value')
-                        except KeyError as e:
-                            errors.append(f'Error: file {config[config_key]} is missing the key: {json_key}')
+                        f.close()
+                except KeyError as e:
+                    errors.append(f'Error: file {config[config_key]} is missing the key: {json_key}')
             else:
                 errors.append('Error: please specify your Genius API token in the config file!')
         except KeyError as e:

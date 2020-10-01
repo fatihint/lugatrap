@@ -22,6 +22,7 @@ class Genius:
                 if self.artist_exists(artist):
                     print(f'Retrieving data for {artist.name}')
                     self.get_songs(artist)
+                    artist.source = ['genius']
                     results.append(artist)
             return results
         except Exception:
