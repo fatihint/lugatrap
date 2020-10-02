@@ -36,7 +36,6 @@ class App:
             self.append(salt_data)
 
         self.save('lyrics', lyrics_result)
-        self.save_lyrics(lyrics_result)
         print('Lyrics saved!')
 
     def parse_artists(self, artists_input):
@@ -90,12 +89,6 @@ class App:
                         a.source.append(artist.source[0])
                         for song in artist.songs:
                             a.songs.append(song)
-
-    def save_lyrics(self, lyrics_result):
-        dump = {"lyrics": self.data['lyrics']}
-        _json = json.dumps(dump, cls=ArtistEncoder, indent=4, ensure_ascii=False)
-        with open(lyrics_result, 'w') as f:
-            f.write(_json)
 
     def analyze(self, lyrics_result, stats_result):
         if not self.data['lyrics']:

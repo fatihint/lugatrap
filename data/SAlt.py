@@ -44,6 +44,7 @@ class SAlt():
     def get_songs(self, artist):
         current_songs_title = [song.title for artist in self._current_lyrics for song in artist.songs]
         page = 1
+        songs = []
         while page:
             url = self.artist_name_url_map[artist.name]
             if page != 1: url = f'{url}/sayfa-/{page}'
@@ -63,8 +64,9 @@ class SAlt():
                             song_url = f'{SAlt._BASE_URL}{a["href"]}'
                             text = Lyrics.remove_redundant_spaces(a.text)
                             song_obj = Song(title=text, artist_id=artist.id, url=song_url)
-                            artist.songs.append(song_obj)
+                            songs.append(song_obj)
                             self.get_song_lyrics(song_obj)
+                artist.songs = songs
             else: break
 
     def get_song_lyrics(self, song):
