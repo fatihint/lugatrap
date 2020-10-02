@@ -20,7 +20,7 @@ def main():
         else:
             for error in scrape_validation_errors:
                 print(error)
-                exit(0)
+            exit(0)
 
     def start_analyze(app):
         analyze_validation_errors = Utils.analyze_validation()

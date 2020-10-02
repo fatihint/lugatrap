@@ -30,23 +30,21 @@ class Utils:
     def is_token_valid():
         return 'genius_api_token' in config and config['genius_api_token']
 
-
     @staticmethod
     def scrape_validation():
         errors = []
         keys = {'artists': 'artists_input_file', 'lyrics': 'lyrics_result_file'}
         try:
             if Utils.is_token_valid():
-                try:
-                    for json_key, config_key in keys.items():
-                        with open(config[config_key]) as f:
-                            data = json.load(f)
-                            print('anananianina', data[json_key])
+                for json_key, config_key in keys.items():
+                    with open(config[config_key]) as f:
+                        data = json.load(f)
+                        if json_key in data:
                             if not type(data[json_key]) == list:
                                 errors.append(f'Error: key {json_key} in the {config[config_key]} file has a non-list value')
-                        f.close()
-                except KeyError as e:
-                    errors.append(f'Error: file {config[config_key]} is missing the key: {json_key}')
+                                print('anananianina', data[json_key])
+                        else:
+                            errors.append(f'Error: file {config[config_key]} is missing the key: {json_key}')
             else:
                 errors.append('Error: please specify your Genius API token in the config file!')
         except KeyError as e:
@@ -55,6 +53,8 @@ class Utils:
             errors.append(f'Error: file {config[config_key]} is not found for {config_key}')
         except json.JSONDecodeError as e:
             errors.append(f'Error: JSON file is invalid')
+        except Exception as e:
+            errors.append('Something went wrong...')
         finally:
             return errors
 
