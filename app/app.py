@@ -36,6 +36,7 @@ class App:
             salt_data = salt.get_data()
             self.append(salt_data)
 
+        self.save('lyrics', lyrics_result)
         self.save_lyrics(lyrics_result)
         print('Lyrics saved!')
 
@@ -88,7 +89,8 @@ class App:
                 for a in lyrics:
                     if artist.name == a.name:
                         a.source.append(artist.source[0])
-                        a.songs.append(artist.songs)
+                        for song in artist.songs:
+                            a.songs.append(song)
 
     def save_lyrics(self, lyrics_result):
         dump = {"lyrics": self.data['lyrics']}
@@ -100,29 +102,11 @@ class App:
         if not self.data['lyrics']:
             self.data['lyrics'] = self.parse_lyrics(lyrics_result)
         self.data['stats'] = self.parse_stats(stats_result)
-
         artists_to_analyze = self.divide_artists_to_analyze()
-        print(artists_to_analyze)
-        pass
-        # try:
-        #     with open(Utils.get_base_file_path(lyrics_input)) as f:
-        #         try:
-        #             data = json.load(f, cls=ArtistDecoder)
-        #             stats = data['results']
-        #             self.parse_stats(stats)
-        #             if self.artists_to_analyze_list:
-        #                 nlp = NLP(self.artists_to_analyze_list)
-        #                 new_stats = nlp.start()
-        #                 processed_new_stats = self.process_stats(new_stats)
-        #                 self.stats['stats'].append(processed_new_stats)
-        #             self.save_stats()
-        #
-        #         except json.JSONDecodeError:
-        #             print('File to be analyzed is invalid..')
-        #         # except Exception:
-        #         #     print('GRPC server may not be running...')
-        # except FileNotFoundError:
-        #     print('Lyrics file to analyze not found...')
+        nlp = NLP(artists=artists_to_analyze)
+        results = nlp.start()
+        self.data['stats'] = nlp.process_stats(results)
+        self.save('stats', stats_result)
 
     def parse_stats(self, stats_result):
         """
@@ -145,18 +129,15 @@ class App:
                 artists_to_analyze.append(artist)
         return artists_to_analyze
 
-    def process_stats(self, stats):
-        for s in stats['stats']:
-            s.analyzed_word_count = len(s.vocab)
-            s.unique_word_count = len(set(s.vocab))
-            s.calculate_top_ten()
-        return stats
+    def save(self, result_type, result_file):
+        cls = dump = ''
+        if result_type == 'lyrics':
+            cls=ArtistEncoder
+            dump = {"lyrics": self.data['lyrics']}
+        elif result_type == 'stats':
+            cls=ArtistStatsEncoder
+            dump = {"stats": self.data['stats']}
 
-    def save_stats(self):
-        try:
-            file = Utils.get_base_file_path("stats.json")
-            _json = json.dumps(self.stats, cls=ArtistStatsEncoder, indent=4, ensure_ascii=False)
-            with open(file, 'w') as f:
-                f.write(_json)
-        except Exception:
-            print('Output file can not be created...')
+        _json = json.dumps(dump, cls=cls, indent=4, ensure_ascii=False)
+        with open(result_file, 'w') as f:
+            f.write(_json)

@@ -10,14 +10,14 @@ from .zemberek import morphology_pb2_grpc as z_morphology_g
 from models import ArtistStats
 
 class NLP:
-    def __init__(self, input_list=[]):
+    def __init__(self, artists):
 
         self.channel = grpc.insecure_channel('localhost:6789')
         self.langid_stub = z_langid_g.LanguageIdServiceStub(self.channel)
         self.normalization_stub = z_normalization_g.NormalizationServiceStub(self.channel)
         self.preprocess_stub = z_preprocess_g.PreprocessingServiceStub(self.channel)
         self.morphology_stub = z_morphology_g.MorphologyServiceStub(self.channel)
-        self.input_list = input_list
+        self.artists = artists
 
     def find_lang_id(self, i):
         return self.langid_stub.Detect(z_langid.LanguageIdRequest(input=i))
@@ -33,24 +33,26 @@ class NLP:
 
     def start(self):
         blacklist = ['punc', 'unk', 'num', 'conj']
-        stats = {"stats": []}
-        for artist in self.input_list:
+        stats = []
+        for artist in self.artists:
             lemmas_result = []
             artist_stats = ArtistStats(artist.name)
             for song in artist.songs:
                 analysed_result = self.analyze(song.lyrics)
-                # analysed_result = self.analyze("ben sen o ve de bir")
                 for a in analysed_result.results:
                     best = a.best
                     lemma = best.lemmas[-1]
                     if best.pos.lower() not in blacklist:
                         lemmas_result.append(best.dictionaryItem.lemma.lower())
                     # print("Word = " + a.token + ", Lemmas = " + lemma + ", POS = [" + best.pos + "], Full Analysis = {" + best.analysis + "}")
-                # break
-            # break
             artist_stats.vocab = lemmas_result
-            stats["stats"].append(artist_stats)
+            stats.append(artist_stats)
 
         return stats
 
-        # print(set(lemmas_result))
+    def process_stats(self, stats):
+        for s in stats:
+            s.analyzed_word_count = len(s.vocab)
+            s.unique_word_count = len(set(s.vocab))
+            s.calculate_top_ten()
+        return stats
