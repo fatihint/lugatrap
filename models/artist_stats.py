@@ -3,12 +3,12 @@ import json
 
 class ArtistStats(object):
 
-    def __init__(self, artist_name):
+    def __init__(self, artist_name, vocab=[], analyzed_word_count=0, unique_word_count=0, top_ten_words={}):
         self._artist_name = artist_name
-        self._vocab = []
-        self._analyzed_word_count = 0
-        self._unique_word_count = 0
-        self.top_ten = {}
+        self._vocab = vocab
+        self._analyzed_word_count = analyzed_word_count
+        self._unique_word_count = unique_word_count
+        self.top_ten_words = top_ten_words
 
     @property
     def artist_name(self):
@@ -60,7 +60,7 @@ class ArtistStats(object):
             else:
                 break
 
-        self.top_ten = result
+        self.top_ten_words = result
 
     def __str__(self):
         return self.artist_name + str(self._vocab) + '\n\n\n'
@@ -74,7 +74,7 @@ class ArtistStatsEncoder(json.JSONEncoder):
                 '_artist_name': obj.artist_name,
                 '_analyzed_word_count': obj.analyzed_word_count,
                 '_unique_word_count': obj.unique_word_count,
-                '_top_ten_words': obj.top_ten
+                '_top_ten_words': obj.top_ten_words
             }
         return super(ArtistStatsEncoder, self).default(obj)
 
@@ -88,5 +88,5 @@ class ArtistStatsDecoder(json.JSONDecoder):
             return obj
         type = obj['_type']
         if type == 'artist_stats':
-            return ArtistStats(artist_name=obj['_artist_name'])
+            return ArtistStats(artist_name=obj['_artist_name'], analyzed_word_count=obj['_analyzed_word_count'], unique_word_count=obj['_unique_word_count'], top_ten_words=obj['_top_ten_words'])
         return obj

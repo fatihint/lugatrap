@@ -1,11 +1,10 @@
 import json
-import config
 
 from models import Artist, ArtistDecoder, ArtistEncoder, ArtistStatsEncoder, ArtistStatsDecoder
 from data import Genius
 from data import SAlt
 from nlp import NLP
-from utils import Utils, Lyrics
+from utils import Lyrics
 
 
 class App:
@@ -105,8 +104,11 @@ class App:
         artists_to_analyze = self.divide_artists_to_analyze()
         nlp = NLP(artists=artists_to_analyze)
         results = nlp.start()
-        self.data['stats'] = nlp.process_stats(results)
+        processed_stats = nlp.process_stats(results)
+        for stat in processed_stats:
+            self.data['stats'].append(stat)
         self.save('stats', stats_result)
+        print('Analyzes saved!')
 
     def parse_stats(self, stats_result):
         """
