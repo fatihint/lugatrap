@@ -24,19 +24,20 @@ class App:
         genius_data = []
         salt_data = []
 
-        # if genius_artists:
-        #     print('Retrieving data from Genius...')
-        #     genius = Genius(api_token=token, artists_to_scrape=genius_artists)
-        #     genius_data = genius.get_data()
-        #     self.append(genius_data)
+        if genius_artists:
+            print('Retrieving data from Genius...')
+            genius = Genius(api_token=token, artists_to_scrape=genius_artists)
+            genius_data = genius.get_data()
+            self.append(genius_data)
 
-        # if salt_artists:
-        #     print('Retrieving data from Sarki Alternatifim...')
-        #     salt = SAlt(artists_to_scrape=salt_artists, current_lyrics=genius_data)
-        #     salt_data = salt.get_data()
-        #     self.append(salt_data)
+        if salt_artists:
+            print('Retrieving data from Sarki Alternatifim...')
+            salt = SAlt(artists_to_scrape=salt_artists, current_lyrics=genius_data)
+            salt_data = salt.get_data()
+            self.append(salt_data)
 
         self.save_lyrics(lyrics_result)
+        print('Lyrics saved!')
 
     def parse_artists(self, artists_input):
         """
@@ -84,19 +85,17 @@ class App:
         artists_to_scrape = {'genius': [], 'salt': []}
         artists = self.data['artists']
         lyrics = self.data['lyrics']
-
-        # todo: sanitize
         lyrics_result = {a.name: a.source for a in lyrics}
-        # TODO: artistleri lyrics result dosyasina kaydederken sanitize
+
         for a in artists:
             if a.name not in lyrics_result:
-                artists_to_scrape['genius'].append(a)
-                artists_to_scrape['salt'].append(a)
+                artists_to_scrape['genius'].append(Artist(a.name))
+                artists_to_scrape['salt'].append(Artist(a.name))
             else:
                 if 'genius' not in lyrics_result[a.name]:
-                    artists_to_scrape['genius'].append(a)
+                    artists_to_scrape['genius'].append(Artist(a.name))
                 if 'salt' not in lyrics_result[a.name]:
-                    artists_to_scrape['salt'].append(a)
+                    artists_to_scrape['salt'].append(Artist(a.name))
         return artists_to_scrape
 
     def append(self, data):
@@ -108,11 +107,12 @@ class App:
             else:
                 for a in lyrics:
                     if artist.name == a.name:
-                        a.source.append(artist.source)
+                        a.source.append(artist.source[0])
                         a.songs.append(artist.songs)
 
     def save_lyrics(self, lyrics_result):
-        _json = json.dumps(self.data['lyrics'], cls=ArtistEncoder, indent=4, ensure_ascii=False)
+        dump = {"lyrics": self.data['lyrics']}
+        _json = json.dumps(dump, cls=ArtistEncoder, indent=4, ensure_ascii=False)
         with open(lyrics_result, 'w') as f:
             f.write(_json)
 
