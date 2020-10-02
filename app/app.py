@@ -59,27 +59,7 @@ class App:
             data = json.load(f, cls=ArtistDecoder)
             for artist in data['lyrics']:
                 lyrics_result_list.append(artist)
-
         return lyrics_result_list
-
-    def parse_stats(self, artists_input_from_lyrics):
-        """
-        Parse stats file and create ArtistStats objects.
-        """
-        file = Utils.get_base_file_path("stats.json")
-        try:
-            with open(file) as f:
-                data = json.load(f, cls=ArtistStatsDecoder)
-                self.stats['stats'] = data['stats']
-                for a in artists_input_from_lyrics:
-                    # for s in self.stats['stats']:
-                    #     print(s.__dict__)
-                    if a.name not in list(s.artist_name for s in self.stats['stats'] if type(s) != dict):
-                        self.artists_to_analyze_list.append(a)
-        except FileNotFoundError:
-            self.artists_to_analyze_list = artists_input_from_lyrics
-        except json.JSONDecodeError:
-            print('Stats file is invalid.')
 
     def divide_artist_sources(self):
         artists_to_scrape = {'genius': [], 'salt': []}
@@ -117,6 +97,12 @@ class App:
             f.write(_json)
 
     def analyze(self, lyrics_result, stats_result):
+        if not self.data['lyrics']:
+            self.data['lyrics'] = self.parse_lyrics(lyrics_result)
+        self.data['stats'] = self.parse_stats(stats_result)
+
+        artists_to_analyze = self.divide_artists_to_analyze()
+        print(artists_to_analyze)
         pass
         # try:
         #     with open(Utils.get_base_file_path(lyrics_input)) as f:
@@ -137,6 +123,27 @@ class App:
         #         #     print('GRPC server may not be running...')
         # except FileNotFoundError:
         #     print('Lyrics file to analyze not found...')
+
+    def parse_stats(self, stats_result):
+        """
+        Parse stats output file (results).
+        """
+        stats_result_list = []
+        with open(stats_result) as f:
+            data = json.load(f, cls=ArtistStatsDecoder)
+            for artist in data['stats']:
+                stats_result_list.append(artist)
+        return stats_result_list
+
+    def divide_artists_to_analyze(self):
+        current_stats_name = [stat.artist_name for stat in self.data['stats']]
+        lyrics = self.data['lyrics']
+        artists_to_analyze = []
+
+        for artist in lyrics:
+            if artist.name not in current_stats_name:
+                artists_to_analyze.append(artist)
+        return artists_to_analyze
 
     def process_stats(self, stats):
         for s in stats['stats']:

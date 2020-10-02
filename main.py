@@ -13,7 +13,8 @@ def main():
     args = parser.parse_args()
 
     def start_scrape(app):
-        scrape_validation_errors = Utils.scrape_validation()
+        print('--- Lyrics Scrape ---')
+        scrape_validation_errors = Utils.validation('scrape')
         if not scrape_validation_errors:
             values = Utils.get_config_values('artists_input_file', 'lyrics_result_file')
             app.scrape(token=config['genius_api_token'], artists_input=values['artists'], lyrics_result=values['lyrics'])
@@ -23,7 +24,8 @@ def main():
             exit(0)
 
     def start_analyze(app):
-        analyze_validation_errors = Utils.analyze_validation()
+        print('\n--- Lyrics Analyze ---')
+        analyze_validation_errors = Utils.validation('analyze')
         if not analyze_validation_errors:
             values = Utils.get_config_values('lyrics_result_file', 'stats_result_file')
             app.analyze(lyrics_result=values['lyrics'], stats_result=values['stats'])
