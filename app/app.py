@@ -30,7 +30,7 @@ class App:
             self.append(genius_data)
 
         if salt_artists:
-            print('Retrieving data from Sarki Alternatifim...')
+            print('\nRetrieving data from Sarki Alternatifim...')
             salt = SAlt(artists_to_scrape=salt_artists, current_lyrics=genius_data)
             salt_data = salt.get_data()
             self.append(salt_data)

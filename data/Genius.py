@@ -20,7 +20,7 @@ class Genius:
             results = []
             for artist in self._artists_to_scrape:
                 if self.artist_exists(artist):
-                    print(f'Retrieving data for {artist.name}')
+                    print(f'Scraping {artist.name}')
                     self.get_songs(artist)
                     artist.source = ['genius']
                     results.append(artist)

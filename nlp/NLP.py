@@ -51,6 +51,8 @@ class NLP:
                             else:
                                 flag = True
                                 break
+                        else:
+                            lemmas_result.append(best.dictionaryItem.lemma.lower())
                 if flag:
                     break
             artist_stats.vocab = lemmas_result
