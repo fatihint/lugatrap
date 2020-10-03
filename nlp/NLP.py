@@ -11,7 +11,7 @@ from models import ArtistStats
 
 
 class NLP:
-    def __init__(self, artists):
+    def __init__(self, artists, analyze_threshold):
 
         self.channel = grpc.insecure_channel('localhost:6789')
         self.langid_stub = z_langid_g.LanguageIdServiceStub(self.channel)
@@ -19,6 +19,7 @@ class NLP:
         self.preprocess_stub = z_preprocess_g.PreprocessingServiceStub(self.channel)
         self.morphology_stub = z_morphology_g.MorphologyServiceStub(self.channel)
         self.artists = artists
+        self.analyze_threshold = analyze_threshold
 
     def find_lang_id(self, i):
         return self.langid_stub.Detect(z_langid.LanguageIdRequest(input=i))
@@ -36,15 +37,22 @@ class NLP:
         blacklist = ['punc', 'unk', 'num', 'conj']
         stats = []
         for artist in self.artists:
+            flag = False
             lemmas_result = []
             artist_stats = ArtistStats(artist.name)
             for song in artist.songs:
                 analysed_result = self.analyze(song.lyrics)
                 for a in analysed_result.results:
                     best = a.best
-                    lemma = best.lemmas[-1]
                     if best.pos.lower() not in blacklist:
-                        lemmas_result.append(best.dictionaryItem.lemma.lower())
+                        if self.analyze_threshold != -1:
+                            if len(lemmas_result) < self.analyze_threshold:
+                                lemmas_result.append(best.dictionaryItem.lemma.lower())
+                            else:
+                                flag = True
+                                break
+                if flag:
+                    break
             artist_stats.vocab = lemmas_result
             stats.append(artist_stats)
 

@@ -27,8 +27,11 @@ def main():
         print('\n--- Lyrics Analyze ---')
         analyze_validation_errors = Utils.validation('analyze')
         if not analyze_validation_errors:
+            analyze_threshold = -1
+            if 'analyze_threshold' in config:
+                analyze_threshold = config['analyze_threshold']
             values = Utils.get_config_values('lyrics_result_file', 'stats_result_file')
-            app.analyze(lyrics_result=values['lyrics'], stats_result=values['stats'])
+            app.analyze(lyrics_result=values['lyrics'], stats_result=values['stats'], analyze_threshold=analyze_threshold)
         else:
             for error in analyze_validation_errors:
                 print(error)

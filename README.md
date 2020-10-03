@@ -14,3 +14,12 @@ norm ender
 # ben fero
 killa hakan
 sagopa kajmer
+
+khontkar
+sokrat st
+xir
+canbay&wolker
+kamufle
+grogi
+ceg
+norm ender

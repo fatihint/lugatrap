@@ -90,12 +90,12 @@ class App:
                         for song in artist.songs:
                             a.songs.append(song)
 
-    def analyze(self, lyrics_result, stats_result):
+    def analyze(self, lyrics_result, stats_result, analyze_threshold):
         if not self.data['lyrics']:
             self.data['lyrics'] = self.parse_lyrics(lyrics_result)
         self.data['stats'] = self.parse_stats(stats_result)
         artists_to_analyze = self.divide_artists_to_analyze()
-        nlp = NLP(artists=artists_to_analyze)
+        nlp = NLP(artists=artists_to_analyze, analyze_threshold=analyze_threshold)
         results = nlp.start()
         processed_stats = nlp.process_stats(results)
         for stat in processed_stats:

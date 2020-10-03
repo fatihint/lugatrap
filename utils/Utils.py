@@ -40,7 +40,12 @@ class Utils:
             else:
                 keys['artists'] = 'artists_input_file'
         elif validation_type == 'analyze':
-            keys['stats'] = 'stats_result_file'
+            try:
+                if 'analyze_threshold' in config:
+                    count = int(config['analyze_threshold'])
+                keys['stats'] = 'stats_result_file'
+            except ValueError:
+                errors.append(f'analyze_threshold value {config["analyze_threshold"]} is not number')
         else:
             errors.append('Validation type unknown...')
 

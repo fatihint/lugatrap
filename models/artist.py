@@ -3,13 +3,12 @@ from .song import Song
 
 
 class Artist(object):
-    def __init__(self, name, songs=[], id=-1, source=None, stats=None, invalid_titles=[]):
+    def __init__(self, name, songs=[], id=-1, source=None, stats=None):
         self._name = name
         self._songs = songs
         self._id = id
         self._stats = stats
         self._source = source
-        self._invalid_titles = invalid_titles
 
     @property
     def name(self):
