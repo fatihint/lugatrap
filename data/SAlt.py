@@ -22,22 +22,25 @@ class SAlt():
                     self.get_songs(artist)
                     artist.source = ['salt']
                     results.append(artist)
+                else:
+                    print(f'Artist {artist.name} could not be found...')
             return results
         except Exception:
             print('Error: Something went wrong...')
 
     def artist_exists(self, artist):
         artist_url = f'{SAlt._BASE_URL}/sarkici/{Lyrics.salt_artist_url(artist.name)}'
+        ids = {artist.name: artist.id for artist in self._current_lyrics}
         soup = self.get_html_response(artist_url)
         content = soup.find(class_='sarkisozu')
         if not content:
-            if not artist.id:
-                artist.id = -1
             return False
         else:
-            if not artist.id:
+            if artist.name not in ids.keys():
                 artist.id = SAlt.id
                 SAlt.id += 1
+            else:
+                artist.id = ids[artist.name]
             self.artist_name_url_map[artist.name] = artist_url
             return True
 

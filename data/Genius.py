@@ -24,6 +24,8 @@ class Genius:
                     self.get_songs(artist)
                     artist.source = ['genius']
                     results.append(artist)
+                else:
+                    print(f'Artist {artist.name} could not be found...')
             return results
         except Exception:
             print('Error: Something went wrong...')
