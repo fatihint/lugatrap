@@ -64,8 +64,9 @@ class SAlt():
                             song_url = f'{SAlt._BASE_URL}{a["href"]}'
                             text = Lyrics.remove_redundant_spaces(a.text)
                             song_obj = Song(title=text, artist_id=artist.id, url=song_url)
-                            songs.append(song_obj)
                             self.get_song_lyrics(song_obj)
+                            if song_obj.lyrics:
+                                songs.append(song_obj)
                 artist.songs = songs
             else: break
 
