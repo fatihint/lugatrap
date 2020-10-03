@@ -45,8 +45,6 @@ class NLP:
                     lemma = best.lemmas[-1]
                     if best.pos.lower() not in blacklist:
                         lemmas_result.append(best.dictionaryItem.lemma.lower())
-                    # print(
-                    #     "Word = " + a.token + ", Lemmas = " + lemma + ", POS = [" + best.pos + "], Full Analysis = {" + best.analysis + "}")
             artist_stats.vocab = lemmas_result
             stats.append(artist_stats)
 
