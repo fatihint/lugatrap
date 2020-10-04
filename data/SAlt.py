@@ -72,7 +72,11 @@ class SAlt():
                             if song_obj.lyrics:
                                 songs.append(song_obj)
             else: break
-        artist.songs += songs
+        if not artist.songs:
+            artist.songs = songs
+        else:
+            t = artist.songs
+            artist.songs = t + songs
 
     def get_song_lyrics(self, song):
         soup = self.get_html_response(song.url)

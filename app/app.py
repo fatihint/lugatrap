@@ -78,17 +78,15 @@ class App:
         return artists_to_scrape
 
     def append(self, data):
-        current_names = [artist.name for artist in self.data['lyrics']]
-        lyrics = self.data['lyrics']
+        current_names = {artist.name: artist for artist in self.data['lyrics']}
         for artist in data:
             if artist.name not in current_names:
                 self.data['lyrics'].append(artist)
             else:
-                for a in lyrics:
-                    if artist.name == a.name:
-                        a.source.append(artist.source[0])
-                        for song in artist.songs:
-                            a.songs.append(song)
+                a = current_names[artist.name]
+                a.source.append(artist.source[0])
+                for song in artist.songs:
+                    a.songs.append(song)
 
     def analyze(self, lyrics_result, stats_result, analyze_threshold):
         if not self.data['lyrics']:

@@ -56,7 +56,12 @@ class Genius:
                         self.get_song_lyrics(song_obj)
                         if song_obj.lyrics:
                             song_list.append(song_obj)
-        artist.songs += song_list
+        # Because of unpredictable appending behaviour
+        if not artist.songs:
+            artist.songs = song_list
+        else:
+            t = artist.songs
+            artist.songs = t + song_list
 
     def get_song_lyrics(self, song):
         lyrics = None
