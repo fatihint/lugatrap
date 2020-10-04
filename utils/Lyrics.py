@@ -80,3 +80,9 @@ class Lyrics:
     @staticmethod
     def sanitize_artist_name(name):
         return Lyrics.remove_redundant_spaces(name).lower()
+
+    @staticmethod
+    def sanitize_genius_name(name):
+        name = Lyrics.remove_all_spaces(name)
+        table = str.maketrans("â", "a")
+        return name.translate(table)

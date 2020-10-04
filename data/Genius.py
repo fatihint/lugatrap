@@ -14,33 +14,34 @@ class Genius:
         self._api_token = api_token
         self._artists_to_scrape = artists_to_scrape
         self._api_headers['Authorization'] = 'Bearer ' + self._api_token
+        self.results = []
 
     def get_data(self):
         try:
-            results = []
             for artist in self._artists_to_scrape:
-                if self.artist_exists(artist):
-                    print(f'Scraping {artist.name}')
-                    self.get_songs(artist)
-                    artist.source = ['genius']
-                    results.append(artist)
-                else:
-                    print(f'Artist {artist.name} could not be found...')
-            return results
+                for name in artist.name.split(','):
+                    if self.artist_exists(artist, name):
+                        print(f'Scraping {name}')
+                        self.get_songs(artist, name)
+                        artist.source = ['genius']
+                        self.append(artist)
+                    else:
+                        print(f'Artist {name} could not be found...')
+            return self.results
         except Exception:
             print('Error: Something went wrong...')
 
-    def artist_exists(self, artist):
-        search_url = f'{Genius._BASE_API_URL}/search?q={artist.name}'
+    def artist_exists(self, artist, name):
+        search_url = f'{Genius._BASE_API_URL}/search?q={name}'
         response = self.get_json_response(search_url)['hits']
         if response:
             for item in response:
-                if item['result']['primary_artist']['name'].lower() == artist.name:
+                if Lyrics.sanitize_genius_name(item['result']['primary_artist']['name'].lower()) == Lyrics.remove_all_spaces(name):
                     artist.id = item['result']['primary_artist']['id']
                     return True
         return False
 
-    def get_songs(self, artist):
+    def get_songs(self, artist, name):
         page = 1
         song_list = []
         while page:
@@ -49,13 +50,13 @@ class Genius:
             r_songs = response['songs']
             page = response['next_page']
             for r_song in r_songs:
-                if artist.name == r_song['primary_artist']['name'].lower():
+                if Lyrics.sanitize_genius_name(r_song['primary_artist']['name'].lower()) == Lyrics.remove_all_spaces(name):
                     if Lyrics.is_genius_title_valid(r_song):
                         song_obj = Song(title=Lyrics.sanitize_title(r_song['title']), artist_id=artist.id, url=r_song['url'])
                         self.get_song_lyrics(song_obj)
                         if song_obj.lyrics:
                             song_list.append(song_obj)
-                        artist.songs = song_list
+        artist.songs += song_list
 
     def get_song_lyrics(self, song):
         lyrics = None
@@ -76,3 +77,11 @@ class Genius:
 
     def get_results(self):
         return self.results
+
+    def append(self, artist_to_append):
+        for i, artist in enumerate(self.results):
+            if artist_to_append.name == artist.name:
+                self.results.pop(i)
+            self.results.append(artist_to_append)
+        if not self.results:
+            self.results.append(artist_to_append)

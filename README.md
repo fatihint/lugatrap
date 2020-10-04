@@ -1,25 +1,10 @@
 # lugatrap
 Vocabulary investigation of turkish rap musicians.
 
-
+not found in genius
 no.1
-sehinsah
-saniser
-ceza
-ezhel
-server uraz (pit10)
-# mode xl
-contra
-norm ender
-# ben fero
-killa hakan
-sagopa kajmer
+sam
+joker
 
-khontkar
-sokrat st
-xir
-canbay&wolker
-kamufle
-grogi
-ceg
-norm ender
+not found in salt
+no.1

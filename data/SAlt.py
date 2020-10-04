@@ -12,45 +12,46 @@ class SAlt():
         self._artists_to_scrape = artists_to_scrape
         self._current_lyrics = current_lyrics
         self.artist_name_url_map = {}
+        self.results = []
 
     def get_data(self):
         try:
-            results = []
             for artist in self._artists_to_scrape:
-                if self.artist_exists(artist):
-                    print(f'Retrieving data for {artist.name}')
-                    self.get_songs(artist)
-                    artist.source = ['salt']
-                    results.append(artist)
-                else:
-                    print(f'Artist {artist.name} could not be found...')
-            return results
+                for name in artist.name.split(','):
+                    if self.artist_exists(artist, name):
+                        print(f'Scraping {name}')
+                        self.get_songs(artist, name)
+                        artist.source = ['salt']
+                        self.append(artist)
+                    else:
+                        print(f'Artist {name} could not be found...')
+            return self.results
         except Exception:
             print('Error: Something went wrong...')
 
-    def artist_exists(self, artist):
-        artist_url = f'{SAlt._BASE_URL}/sarkici/{Lyrics.salt_artist_url(artist.name)}'
-        ids = {artist.name: artist.id for artist in self._current_lyrics}
+    def artist_exists(self, artist, name):
+        artist_url = f'{SAlt._BASE_URL}/sarkici/{Lyrics.salt_artist_url(name)}'
+        ids = {name: artist.id for artist in self._current_lyrics}
         soup = self.get_html_response(artist_url)
         content = soup.find(class_='sarkisozu')
         if not content:
             return False
         else:
-            if artist.name not in ids.keys():
+            if name not in ids.keys():
                 artist.id = SAlt.id
                 SAlt.id += 1
             else:
-                artist.id = ids[artist.name]
-            self.artist_name_url_map[artist.name] = artist_url
+                artist.id = ids[name]
+            self.artist_name_url_map[name] = artist_url
             return True
 
-    def get_songs(self, artist):
+    def get_songs(self, artist, name):
         current_songs_title = [song.title for artist in self._current_lyrics for song in artist.songs]
         page = 1
         songs = []
         while page:
-            url = self.artist_name_url_map[artist.name]
-            if page != 1: url = f'{url}/sayfa-/{page}'
+            url = self.artist_name_url_map[name]
+            if page != 1: url = f'{url}/sayfa-{page}'
             soup = self.get_html_response(url)
             song_container = soup.find('div', class_='sarkisozu')
             if song_container:
@@ -70,8 +71,8 @@ class SAlt():
                             self.get_song_lyrics(song_obj)
                             if song_obj.lyrics:
                                 songs.append(song_obj)
-                artist.songs = songs
             else: break
+        artist.songs += songs
 
     def get_song_lyrics(self, song):
         soup = self.get_html_response(song.url)
@@ -87,3 +88,11 @@ class SAlt():
     def get_html_response(self, url):
         res = requests.get(url).text
         return BeautifulSoup(res, 'html.parser')
+
+    def append(self, artist_to_append):
+        for i, artist in enumerate(self.results):
+            if artist_to_append.name == artist.name:
+                self.results.pop(i)
+            self.results.append(artist_to_append)
+        if not self.results:
+            self.results.append(artist_to_append)
