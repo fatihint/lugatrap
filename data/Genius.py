@@ -87,6 +87,4 @@ class Genius:
         for i, artist in enumerate(self.results):
             if artist_to_append.name == artist.name:
                 self.results.pop(i)
-            self.results.append(artist_to_append)
-        if not self.results:
-            self.results.append(artist_to_append)
+        self.results.append(artist_to_append)
