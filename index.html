@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</head>
+<body>
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <!-- <h1>Luga-t-rap</h1> -->
+            <canvas id="myChart"></canvas>
+        </div>
+    </main>
+<script>
+const canvas = document.getElementById('myChart');
+const ctx = canvas.getContext('2d');
+
+const stats = {
+    "stats": [
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ağaçkakan",
+            "_analyzed_word_count": 13311,
+            "_unique_word_count": 3612,
+            "_top_ten_words": {
+                "bir": 314,
+                "ben": 200,
+                "olmak": 196,
+                "bu": 167,
+                "yok": 102,
+                "etmek": 99,
+                "ne": 92,
+                "o": 90,
+                "iç": 78,
+                "sen": 72
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "mode xl",
+            "_analyzed_word_count": 15789,
+            "_unique_word_count": 2810,
+            "_top_ten_words": {
+                "sen": 322,
+                "olmak": 257,
+                "bir": 254,
+                "bu": 241,
+                "ben": 226,
+                "yol": 176,
+                "bakmak": 132,
+                "vermek": 119,
+                "kalmak": 119,
+                "göz": 113
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ben fero",
+            "_analyzed_word_count": 4488,
+            "_unique_word_count": 1118,
+            "_top_ten_words": {
+                "ben": 132,
+                "olmak": 81,
+                "demek": 75,
+                "bu": 68,
+                "sen": 55,
+                "yapmak": 52,
+                "çok": 51,
+                "iş": 49,
+                "gibi": 46,
+                "için": 44
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ezhel",
+            "_analyzed_word_count": 11321,
+            "_unique_word_count": 2170,
+            "_top_ten_words": {
+                "ben": 327,
+                "olmak": 221,
+                "sen": 181,
+                "demek": 156,
+                "bu": 131,
+                "her": 130,
+                "o": 116,
+                "ne": 113,
+                "bir": 92,
+                "yapmak": 91
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "anıl piyancı",
+            "_analyzed_word_count": 13285,
+            "_unique_word_count": 2353,
+            // "_unique_word_count": 2605,
+            "_top_ten_words": {
+                "ben": 291,
+                "bu": 280,
+                "olmak": 217,
+                "bir": 215,
+                "sen": 208,
+                "yok": 114,
+                "bakmak": 111,
+                "demek": 103,
+                "değil": 95,
+                "her": 94
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şehinşah",
+            "_analyzed_word_count": 28720,
+            "_unique_word_count": 5000,
+            "_top_ten_words": {
+                "ben": 564,
+                "olmak": 360,
+                "bir": 343,
+                "bu": 335,
+                "sen": 318,
+                "o": 250,
+                "ne": 229,
+                "rap": 214,
+                "etmek": 201,
+                "yapmak": 191
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şanışer",
+            "_analyzed_word_count": 28914,
+            "_unique_word_count": 3777,
+            "_top_ten_words": {
+                "ben": 954,
+                "olmak": 554,
+                "bu": 513,
+                "sen": 506,
+                "bir": 300,
+                "var": 285,
+                "yok": 233,
+                "gelmek": 219,
+                "o": 212,
+                "her": 206
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "contra",
+            "_analyzed_word_count": 21431,
+            "_unique_word_count": 3089,
+            "_top_ten_words": {
+                "ben": 647,
+                "bu": 569,
+                "olmak": 356,
+                "o": 285,
+                "yok": 246,
+                "gibi": 241,
+                "sen": 236,
+                "her": 222,
+                "ne": 209,
+                "bok": 183
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ceza",
+            "_analyzed_word_count": 50527,
+            "_unique_word_count": 4862,
+            "_top_ten_words": {
+                "ben": 1476,
+                "bir": 1140,
+                "bu": 933,
+                "olmak": 924,
+                "sen": 703,
+                "her": 546,
+                "yok": 502,
+                "var": 444,
+                "gelmek": 432,
+                "bakmak": 424
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sagopa kajmer",
+            "_analyzed_word_count": 75818,
+            "_unique_word_count": 6565,
+            "_top_ten_words": {
+                "ben": 1712,
+                "bir": 1437,
+                "olmak": 1351,
+                "bu": 1018,
+                "sen": 922,
+                "etmek": 503,
+                "kendi": 482,
+                "o": 480,
+                "var": 472,
+                "her": 468
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "killa hakan",
+            "_analyzed_word_count": 20630,
+            "_unique_word_count": 2959,
+            "_top_ten_words": {
+                "olmak": 382,
+                "bir": 378,
+                "ben": 303,
+                "sen": 302,
+                "bakmak": 246,
+                "bu": 238,
+                "gelmek": 172,
+                "demek": 149,
+                "yer": 148,
+                "göz": 148
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "khontkar",
+            "_analyzed_word_count": 14915,
+            "_unique_word_count": 2319,
+            "_top_ten_words": {
+                "ben": 417,
+                "sen": 299,
+                "bakmak": 230,
+                "yok": 221,
+                "bu": 218,
+                "olmak": 173,
+                "o": 159,
+                "yine": 119,
+                "i": 118,
+                "ne": 113
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "norm ender",
+            "_analyzed_word_count": 10958,
+            "_unique_word_count": 2234,
+            "_top_ten_words": {
+                "bu": 343,
+                "ben": 310,
+                "sen": 201,
+                "olmak": 186,
+                "bir": 175,
+                "o": 140,
+                "bakmak": 101,
+                "yok": 101,
+                "demek": 90,
+                "ne": 89
+            }
+        },
+    ],
+};
+
+const images = [];
+const datasets = [];
+const y = {
+    25: []
+};
+
+
+stats.stats.forEach((element, index) => {
+    let image = new Image(110, 110);
+    image.src = `public/images/${element._artist_name}.png`;
+    images.push(image);
+
+    let yValue = 25;
+    let xValue = element._unique_word_count;
+    let yCounter = 1
+
+    while (true) {
+        y[yValue].forEach((value) => {
+            if (Math.abs(value - xValue) < 430) {
+                yValue += 15;
+            }
+        });
+        break;
+    }
+
+    if (yValue in y) y[yValue].push(xValue);
+    else y[yValue] = [xValue];
+
+    d = {
+        label: element._artist_name,
+        data: [{x: xValue, y:yValue, r:30}]
+    };
+
+    datasets.push(d)
+    // console.log(y)
+});
+
+Chart.plugins.register({
+    afterUpdate: function(chart) {
+        images.forEach((element, index) => {
+            chart.config.data.datasets[index]._meta[0].data[0]._model.pointStyle = element;
+        });
+    }
+});
+
+const customTooltips = function(tooltip) {
+    let tooltipEl = document.getElementById('chartjs-tooltip');
+
+    if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'chartjs-tooltip';
+        tooltipEl.innerHTML = '<table></table>';
+        this._chart.canvas.parentNode.appendChild(tooltipEl);
+    }
+
+    if (tooltip.opacity === 0) {
+        tooltipEl.style.opacity = '0';
+        return;
+    }
+
+    // Set caret Position
+    tooltipEl.classList.remove('above', 'below', 'no-transform');
+    if (tooltip.yAlign) {
+        tooltipEl.classList.add(tooltip.yAlign);
+    } else {
+        tooltipEl.classList.add('no-transform');
+    }
+
+    function getBody(bodyItem) {
+        return bodyItem.lines;
+    }
+
+    // Set Text
+    if (tooltip.body) {
+        let titleLines = tooltip.title || [];
+        let bodyLines = tooltip.body.map(getBody);
+
+        let innerHtml = '<thead>';
+
+        titleLines.forEach(function(title) {
+            innerHtml += '<tr><th>' + title + '</th></tr>';
+        });
+        innerHtml += '</thead><tbody>';
+
+        bodyLines.forEach(function(body, i) {
+            let colors = tooltip.labelColors[i];
+            let style = 'background:' + colors.backgroundColor;
+            style += '; border-color:' + colors.borderColor;
+            style += '; border-width: 2px';
+            let span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+            innerHtml += '<tr><td>' + span + body + '</td></tr>';
+        });
+        innerHtml += '</tbody>';
+
+        let tableRoot = tooltipEl.querySelector('table');
+        tableRoot.innerHTML = innerHtml;
+    }
+
+    let positionY = this._chart.canvas.offsetTop;
+    let positionX = this._chart.canvas.offsetLeft;
+
+    // Display, position, and set styles for font
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+    tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+    tooltipEl.style.fontFamily = tooltip._bodyFontFamily;
+    tooltipEl.style.fontSize = tooltip.bodyFontSize + 'px';
+    tooltipEl.style.fontStyle = tooltip._bodyFontStyle;
+    tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
+};
+
+const lugatrapChart = new Chart(ctx, {
+    type: 'bubble',
+    data: {
+        datasets: datasets
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 50
+                }
+            }]
+        },
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    let x = data.datasets[tooltipItem.datasetIndex];
+                    console.log(x);
+                    let label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += tooltipItem.xLabel;
+                    return label
+                }
+            },
+            enabled: false,
+            mode: 'dataset',
+            position: 'nearest',
+            custom: customTooltips
+        }
+    }
+});
+</script>
+</body>
+</html>
