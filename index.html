@@ -14,7 +14,7 @@
     <main role="main" class="container">
         <div class="jumbotron">
             <!-- <h1>Luga-t-rap</h1> -->
-            <canvas id="myChart"></canvas>
+            <canvas id="myChart" height="200"></canvas>
         </div>
     </main>
 <script>
@@ -366,6 +366,114 @@ const stats = {
                 "kalmak": 218
             }
         },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "xir,xir gökdeniz",
+            "_analyzed_word_count": 13343,
+            "_unique_word_count": 2315,
+            "_top_ten_words": {
+                "ben": 459,
+                "bu": 349,
+                "olmak": 309,
+                "sen": 298,
+                "bir": 177,
+                "ne": 147,
+                "o": 140,
+                "yok": 130,
+                "her": 119,
+                "gelmek": 111
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "grogi",
+            "_analyzed_word_count": 7081,
+            "_unique_word_count": 1804,
+            "_top_ten_words": {
+                "bu": 135,
+                "ben": 130,
+                "olmak": 124,
+                "yok": 92,
+                "o": 88,
+                "sen": 77,
+                "bir": 70,
+                "gün": 69,
+                "her": 64,
+                "kafa": 64
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ceg,cegıd",
+            "_analyzed_word_count": 22601,
+            "_unique_word_count": 3614,
+            "_top_ten_words": {
+                "ben": 1015,
+                "bu": 848,
+                "olmak": 327,
+                "o": 323,
+                "değil": 234,
+                "vermek": 217,
+                "gibi": 199,
+                "etmek": 172,
+                "her": 169,
+                "sen": 166
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "saian",
+            "_analyzed_word_count": 14957,
+            "_unique_word_count": 3620,
+            "_top_ten_words": {
+                "ben": 400,
+                "bir": 342,
+                "sen": 296,
+                "bu": 155,
+                "olmak": 145,
+                "gelmek": 112,
+                "biz": 103,
+                "var": 100,
+                "bakmak": 99,
+                "her": 95
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "aga b",
+            "_analyzed_word_count": 4899,
+            "_unique_word_count": 1455,
+            "_top_ten_words": {
+                "bu": 147,
+                "ne": 93,
+                "biz": 61,
+                "yok": 54,
+                "bir": 51,
+                "ben": 51,
+                "sen": 49,
+                "o": 48,
+                "olmak": 46,
+                "daha": 46
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şam,şam (tur)",
+            "_analyzed_word_count": 2144,
+            "_unique_word_count": 704,
+            "_top_ten_words": {
+                "bu": 92,
+                "bir": 50,
+                "ben": 48,
+                "olmak": 46,
+                "sen": 27,
+                "bakmak": 26,
+                "yok": 23,
+                "yol": 23,
+                "yaşamak": 21,
+                "hayat": 19
+            }
+        },
     ],
 };
 
@@ -375,12 +483,11 @@ const y = {};
 
 
 stats.stats.forEach((element, index) => {
-    let image = new Image(110, 110);
+    let image = new Image(80, 80);
     image.src = `public/images/${element._artist_name}.png`;
     images.push(image);
 
-    let yValue = 60;
-    let originalyValue = 25;
+    let yValue = 10;
     let xValue = element._unique_word_count;
     let yCounter = 1;
 
@@ -392,9 +499,9 @@ stats.stats.forEach((element, index) => {
         y[yValue].forEach((value) => {
             if (Math.abs(value - xValue) < 430) {
                 if (yCounter % 2 === 1) {
-                    yValue += (40 * yCounter)
+                    yValue += (5 * yCounter)
                 } else {
-                    yValue -= (40 * yCounter);
+                    yValue -= (5 * yCounter);
                 }
                 flag = false;
                 yCounter++;
@@ -492,10 +599,12 @@ const lugatrapChart = new Chart(ctx, {
     options: {
         scales: {
             yAxes: [{
-                display: true,
+                display: false
+            }],
+            xAxes: [{
                 ticks: {
                     suggestedMin: 0,
-                    suggestedMax: 150
+                    suggestedMax: 7000
                 }
             }]
         },
