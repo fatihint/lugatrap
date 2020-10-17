@@ -258,14 +258,120 @@ const stats = {
                 "ne": 89
             }
         },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "patron",
+            "_analyzed_word_count": 25629,
+            "_unique_word_count": 3840,
+            "_top_ten_words": {
+                "ben": 710,
+                "sen": 477,
+                "bu": 452,
+                "olmak": 373,
+                "bir": 262,
+                "o": 247,
+                "yok": 245,
+                "para": 215,
+                "her": 195,
+                "ne": 188
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "tepki",
+            "_analyzed_word_count": 12173,
+            "_unique_word_count": 2123,
+            "_top_ten_words": {
+                "bu": 411,
+                "olmak": 211,
+                "ben": 192,
+                "sen": 150,
+                "her": 134,
+                "o": 131,
+                "ne": 113,
+                "benji": 105,
+                "daha": 100,
+                "yine": 97
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sokrat st",
+            "_analyzed_word_count": 14172,
+            "_unique_word_count": 2159,
+            "_top_ten_words": {
+                "ben": 485,
+                "bu": 300,
+                "olmak": 285,
+                "sen": 275,
+                "bir": 207,
+                "değil": 154,
+                "yok": 136,
+                "ne": 134,
+                "hayat": 124,
+                "her": 122
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "kamufle",
+            "_analyzed_word_count": 8399,
+            "_unique_word_count": 1921,
+            "_top_ten_words": {
+                "ben": 226,
+                "olmak": 175,
+                "bu": 158,
+                "bir": 124,
+                "sen": 100,
+                "ne": 81,
+                "etmek": 79,
+                "yok": 78,
+                "var": 76,
+                "her": 69
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "no.1",
+            "_analyzed_word_count": 39726,
+            "_unique_word_count": 4172,
+            "_top_ten_words": {
+                "ben": 1214,
+                "bu": 794,
+                "sen": 730,
+                "olmak": 722,
+                "bir": 420,
+                "yok": 348,
+                "gelmek": 304,
+                "gibi": 296,
+                "bakmak": 276,
+                "her": 264
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "server uraz,pit10",
+            "_analyzed_word_count": 30931,
+            "_unique_word_count": 4257,
+            "_top_ten_words": {
+                "ben": 868,
+                "bu": 601,
+                "bir": 514,
+                "olmak": 506,
+                "sen": 412,
+                "o": 292,
+                "yok": 260,
+                "her": 231,
+                "var": 220,
+                "kalmak": 218
+            }
+        },
     ],
 };
 
 const images = [];
 const datasets = [];
-const y = {
-    25: []
-};
+const y = {};
 
 
 stats.stats.forEach((element, index) => {
@@ -273,29 +379,35 @@ stats.stats.forEach((element, index) => {
     image.src = `public/images/${element._artist_name}.png`;
     images.push(image);
 
-    let yValue = 25;
+    let yValue = 60;
+    let originalyValue = 25;
     let xValue = element._unique_word_count;
-    let yCounter = 1
+    let yCounter = 1;
 
     while (true) {
+        let flag = true;
+        if (!(yValue in y)) {
+            y[yValue] = []
+        }
         y[yValue].forEach((value) => {
             if (Math.abs(value - xValue) < 430) {
-                yValue += 15;
+                if (yCounter % 2 === 1) {
+                    yValue += (40 * yCounter)
+                } else {
+                    yValue -= (40 * yCounter);
+                }
+                flag = false;
+                yCounter++;
             }
         });
-        break;
+        if (flag) break;
     }
-
-    if (yValue in y) y[yValue].push(xValue);
-    else y[yValue] = [xValue];
-
-    d = {
+    y[yValue].push(xValue);
+    let d = {
         label: element._artist_name,
         data: [{x: xValue, y:yValue, r:30}]
     };
-
     datasets.push(d)
-    // console.log(y)
 });
 
 Chart.plugins.register({
@@ -383,7 +495,7 @@ const lugatrapChart = new Chart(ctx, {
                 display: true,
                 ticks: {
                     suggestedMin: 0,
-                    suggestedMax: 50
+                    suggestedMax: 150
                 }
             }]
         },
