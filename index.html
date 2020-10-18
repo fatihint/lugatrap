@@ -13,7 +13,7 @@
 <body>
     <main role="main" class="container">
         <div class="jumbotron">
-            <!-- <h1>Luga-t-rap</h1> -->
+             <h2>Luga-t-rap</h2>
             <canvas id="myChart" height="250"></canvas>
         </div>
     </main>
@@ -100,7 +100,6 @@ const stats = {
             "_artist_name": "anıl piyancı",
             "_analyzed_word_count": 13285,
             "_unique_word_count": 2353,
-            // "_unique_word_count": 2605,
             "_top_ten_words": {
                 "ben": 291,
                 "bu": 280,
@@ -350,7 +349,7 @@ const stats = {
         },
         {
             "_type": "artist_stats",
-            "_artist_name": "server uraz,pit10",
+            "_artist_name": "server uraz",
             "_analyzed_word_count": 30931,
             "_unique_word_count": 4257,
             "_top_ten_words": {
@@ -368,7 +367,7 @@ const stats = {
         },
         {
             "_type": "artist_stats",
-            "_artist_name": "xir,xir gökdeniz",
+            "_artist_name": "xir",
             "_analyzed_word_count": 13343,
             "_unique_word_count": 2315,
             "_top_ten_words": {
@@ -404,7 +403,7 @@ const stats = {
         },
         {
             "_type": "artist_stats",
-            "_artist_name": "ceg,cegıd",
+            "_artist_name": "ceg",
             "_analyzed_word_count": 22601,
             "_unique_word_count": 3614,
             "_top_ten_words": {
@@ -458,7 +457,7 @@ const stats = {
         },
         {
             "_type": "artist_stats",
-            "_artist_name": "şam,şam (tur)",
+            "_artist_name": "şam",
             "_analyzed_word_count": 2144,
             "_unique_word_count": 704,
             "_top_ten_words": {
@@ -530,7 +529,7 @@ const stats = {
         },
         {
             "_type": "artist_stats",
-            "_artist_name": "joker,joker (türkiye)",
+            "_artist_name": "joker",
             "_analyzed_word_count": 25595,
             "_unique_word_count": 3681,
             "_top_ten_words": {
@@ -998,7 +997,7 @@ const stats = {
         },
         {
             "_type": "artist_stats",
-            "_artist_name": "motive,motive (m.o.b)",
+            "_artist_name": "motive",
             "_analyzed_word_count": 968,
             "_unique_word_count": 467,
             "_top_ten_words": {
@@ -1221,21 +1220,29 @@ const y = {};
 
 
 stats.stats.forEach((element, index) => {
-    let image = new Image(60, 60);
+    let image = new Image(55, 55);
     image.src = `public/images/${element._artist_name}.png`;
     images.push(image);
 
     let yValue = 10;
     let xValue = element._unique_word_count;
+    let name = element._artist_name;
+    let top_ten = element._top_ten_words;
+    let analyzed = element._analyzed_word_count;
     let yCounter = 1;
 
+    a = name.split(' ');
+    x = a.map((element) => {
+        return element.charAt(0).toUpperCase() + element.slice(1);
+    });
+    name = x.join(' ');
     while (true) {
         let flag = true;
         if (!(yValue in y)) {
             y[yValue] = []
         }
         y[yValue].forEach((value) => {
-            if (Math.abs(value - xValue) < 360) {
+            if (Math.abs(value - xValue) < 330) {
                 if (yCounter % 2 === 1) {
                     yValue += (3 * yCounter)
                 } else {
@@ -1247,12 +1254,15 @@ stats.stats.forEach((element, index) => {
         });
         if (flag) break;
     }
+
+
     y[yValue].push(xValue);
     let d = {
-        label: element._artist_name,
-        data: [{x: xValue, y:yValue, r:30}]
+        label: name,
+        data: [{x: xValue, y:yValue, r:30, analyzed: analyzed, top_ten: top_ten}]
     };
     datasets.push(d)
+    // console.log(d)
 });
 
 Chart.plugins.register({
@@ -1307,8 +1317,7 @@ const customTooltips = function(tooltip) {
             let style = 'background:' + colors.backgroundColor;
             style += '; border-color:' + colors.borderColor;
             style += '; border-width: 2px';
-            let span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-            innerHtml += '<tr><td>' + span + body + '</td></tr>';
+            innerHtml += '<tr><td>' + body + '</td></tr>';
         });
         innerHtml += '</tbody>';
 
@@ -1353,19 +1362,25 @@ const lugatrapChart = new Chart(ctx, {
             callbacks: {
                 label: function(tooltipItem, data) {
                     let x = data.datasets[tooltipItem.datasetIndex];
-                    console.log(x);
-                    let label = data.datasets[tooltipItem.datasetIndex].label || '';
-                    if (label) {
-                        label += ': ';
+                    analyzed = data.datasets[tooltipItem.datasetIndex].data[0].analyzed;
+                    top_ten = data.datasets[tooltipItem.datasetIndex].data[0].top_ten;
+                    let label = `<h4 class="text-center">${data.datasets[tooltipItem.datasetIndex].label || ''} </h4>`;
+                    label += `Benzersiz kelime: ${tooltipItem.xLabel}<br>`;
+                    label += `Analiz edilen kelime: ${analyzed}<br>`;
+                    label += `En cok kullanilan 10 kelime: <br> `;
+                    for (const word in top_ten) {
+                        label += `${word.toString()}: ${top_ten[word]} <br>`
                     }
-                    label += tooltipItem.xLabel;
                     return label
                 }
             },
             enabled: false,
             mode: 'dataset',
             position: 'nearest',
-            custom: customTooltips
+            xPadding: 10,
+            yPadding: 10,
+            custom: customTooltips,
+            displayColors: false,
         }
     }
 });
