@@ -1361,26 +1361,25 @@ const lugatrapChart = new Chart(ctx, {
         tooltips: {
             callbacks: {
                 label: function(tooltipItem, data) {
-                    let x = data.datasets[tooltipItem.datasetIndex];
                     analyzed = data.datasets[tooltipItem.datasetIndex].data[0].analyzed;
                     top_ten = data.datasets[tooltipItem.datasetIndex].data[0].top_ten;
                     let label = `<h4 class="text-center">${data.datasets[tooltipItem.datasetIndex].label || ''} </h4>`;
-                    label += `Benzersiz kelime: ${tooltipItem.xLabel}<br>`;
-                    label += `Analiz edilen kelime: ${analyzed}<br>`;
-                    label += `En cok kullanilan 10 kelime: <br> `;
+                    label += `<span class="text-danger"><b>Analiz edilen kelime: </b></span><span class="tt-value">${analyzed}</span><br>`;
+                    label += `<span class="text-danger"><b>Benzersiz kelime: </b></span><span class="tt-value">${tooltipItem.xLabel}</span><br><br>`;
+                    label += `<span class="text-danger"><b>En çok kullanılan 10 kelime:</b></span><br> `;
                     for (const word in top_ten) {
-                        label += `${word.toString()}: ${top_ten[word]} <br>`
+                        label += `<b>${word.toString()}:</b> <span class="tt-value">${top_ten[word]}</span><br>`
                     }
                     return label
                 }
             },
             enabled: false,
+            bodyFontSize: 13,
             mode: 'dataset',
             position: 'nearest',
             xPadding: 10,
             yPadding: 10,
-            custom: customTooltips,
-            displayColors: false,
+            custom: customTooltips
         }
     }
 });
