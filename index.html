@@ -18,13 +18,15 @@
             <a class="btn btn-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a>
             <a class="btn btn-dark" id="unique-to-all" href="#">Eşsiz kelime / Toplam kelime</a>
             <canvas id="myChart" height="250" class="mt-3"></canvas>
-            <canvas class="d-none" id="first-ten-thousand-chart" height="250" class="mt-3"></canvas>
-            <canvas class="d-none" id="unique-to-all-chart" height="250" class="mt-3"></canvas>
         </div>
     </main>
 <script>
 const canvas = document.getElementById('myChart');
 const ctx = canvas.getContext('2d');
+const allButton = document.getElementById('all');
+const fttButton = document.getElementById('first-ten-thousand');
+const utaButton = document.getElementById('unique-to-all');
+
 const container = document.getElementById('container');
 const i = Math.round(container.offsetWidth / 23);
 
@@ -1222,67 +1224,625 @@ const allStats = {
 };
 
 const fttStats = {
-    "stats": []
-}
+    "stats": [
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ağaçkakan",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 3191,
+            "_  top_ten_words": {
+                "bir": 236,
+                "olmak": 149,
+                "ben": 145,
+                "bu": 119,
+                "o": 80,
+                "etmek": 79,
+                "yok": 78,
+                "ne": 65,
+                "iç": 59,
+                "var": 52
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "mode xl",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2252,
+            "_top_ten_words": {
+                "sen": 186,
+                "olmak": 173,
+                "bir": 163,
+                "bu": 142,
+                "yol": 101,
+                "ben": 99,
+                "vermek": 93,
+                "göz": 78,
+                "bakmak": 77,
+                "kendi": 76
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ben fero",
+            "_analyzed_word_count": 4488,
+            "_unique_word_count": 1118,
+            "_top_ten_words": {
+                "ben": 132,
+                "olmak": 81,
+                "demek": 75,
+                "bu": 68,
+                "sen": 55,
+                "yapmak": 52,
+                "çok": 51,
+                "iş": 49,
+                "gibi": 46,
+                "için": 44
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ezhel",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2036,
+            "_top_ten_words": {
+                "ben": 293,
+                "olmak": 200,
+                "sen": 172,
+                "demek": 150,
+                "bu": 120,
+                "her": 119,
+                "ne": 108,
+                "o": 103,
+                "hayır": 91,
+                "etmek": 86
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "anıl piyancı",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 1943,
+            "_top_ten_words": {
+                "ben": 237,
+                "bu": 207,
+                "sen": 163,
+                "olmak": 159,
+                "bir": 154,
+                "bakmak": 91,
+                "demek": 90,
+                "değil": 76,
+                "var": 72,
+                "her": 71
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şehinşah",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2932,
+            "_top_ten_words": {
+                "ben": 199,
+                "olmak": 129,
+                "bir": 124,
+                "sen": 119,
+                "bu": 111,
+                "o": 95,
+                "demek": 83,
+                "etmek": 82,
+                "rap": 78,
+                "ne": 76
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şanışer",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2047,
+            "_top_ten_words": {
+                "ben": 307,
+                "bu": 196,
+                "olmak": 183,
+                "sen": 137,
+                "bir": 118,
+                "var": 102,
+                "gelmek": 91,
+                "etmek": 90,
+                "yanmak": 82,
+                "yok": 79
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "contra",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2274,
+            "_top_ten_words": {
+                "ben": 337,
+                "bu": 234,
+                "olmak": 186,
+                "o": 134,
+                "ne": 118,
+                "gibi": 115,
+                "her": 114,
+                "sen": 113,
+                "demek": 104,
+                "yok": 99
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ceza",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 1920,
+            "_top_ten_words": {
+                "ben": 272,
+                "bir": 223,
+                "bu": 166,
+                "olmak": 163,
+                "sen": 133,
+                "her": 131,
+                "yok": 113,
+                "gelmek": 110,
+                "hadi": 98,
+                "var": 92
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sagopa kajmer",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2235,
+            "_top_ten_words": {
+                "ben": 275,
+                "bir": 221,
+                "olmak": 157,
+                "bu": 118,
+                "sen": 93,
+                "bilmek": 87,
+                "etmek": 74,
+                "yok": 70,
+                "baş": 70,
+                "o": 66
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ağaçkakan",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 3191,
+            "_  top_ten_words": {
+                "bir": 236,
+                "olmak": 149,
+                "ben": 145,
+                "bu": 119,
+                "o": 80,
+                "etmek": 79,
+                "yok": 78,
+                "ne": 65,
+                "iç": 59,
+                "var": 52
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "mode xl",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2252,
+            "_top_ten_words": {
+                "sen": 186,
+                "olmak": 173,
+                "bir": 163,
+                "bu": 142,
+                "yol": 101,
+                "ben": 99,
+                "vermek": 93,
+                "göz": 78,
+                "bakmak": 77,
+                "kendi": 76
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ben fero",
+            "_analyzed_word_count": 4488,
+            "_unique_word_count": 1118,
+            "_top_ten_words": {
+                "ben": 132,
+                "olmak": 81,
+                "demek": 75,
+                "bu": 68,
+                "sen": 55,
+                "yapmak": 52,
+                "çok": 51,
+                "iş": 49,
+                "gibi": 46,
+                "için": 44
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ezhel",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2036,
+            "_top_ten_words": {
+                "ben": 293,
+                "olmak": 200,
+                "sen": 172,
+                "demek": 150,
+                "bu": 120,
+                "her": 119,
+                "ne": 108,
+                "o": 103,
+                "hayır": 91,
+                "etmek": 86
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "anıl piyancı",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 1943,
+            "_top_ten_words": {
+                "ben": 237,
+                "bu": 207,
+                "sen": 163,
+                "olmak": 159,
+                "bir": 154,
+                "bakmak": 91,
+                "demek": 90,
+                "değil": 76,
+                "var": 72,
+                "her": 71
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şehinşah",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2932,
+            "_top_ten_words": {
+                "ben": 199,
+                "olmak": 129,
+                "bir": 124,
+                "sen": 119,
+                "bu": 111,
+                "o": 95,
+                "demek": 83,
+                "etmek": 82,
+                "rap": 78,
+                "ne": 76
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şanışer",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2047,
+            "_top_ten_words": {
+                "ben": 307,
+                "bu": 196,
+                "olmak": 183,
+                "sen": 137,
+                "bir": 118,
+                "var": 102,
+                "gelmek": 91,
+                "etmek": 90,
+                "yanmak": 82,
+                "yok": 79
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "contra",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2274,
+            "_top_ten_words": {
+                "ben": 337,
+                "bu": 234,
+                "olmak": 186,
+                "o": 134,
+                "ne": 118,
+                "gibi": 115,
+                "her": 114,
+                "sen": 113,
+                "demek": 104,
+                "yok": 99
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ceza",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 1920,
+            "_top_ten_words": {
+                "ben": 272,
+                "bir": 223,
+                "bu": 166,
+                "olmak": 163,
+                "sen": 133,
+                "her": 131,
+                "yok": 113,
+                "gelmek": 110,
+                "hadi": 98,
+                "var": 92
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sagopa kajmer",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2235,
+            "_top_ten_words": {
+                "ben": 275,
+                "bir": 221,
+                "olmak": 157,
+                "bu": 118,
+                "sen": 93,
+                "bilmek": 87,
+                "etmek": 74,
+                "yok": 70,
+                "baş": 70,
+                "o": 66
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ağaçkakan",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 3191,
+            "_  top_ten_words": {
+                "bir": 236,
+                "olmak": 149,
+                "ben": 145,
+                "bu": 119,
+                "o": 80,
+                "etmek": 79,
+                "yok": 78,
+                "ne": 65,
+                "iç": 59,
+                "var": 52
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "mode xl",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2252,
+            "_top_ten_words": {
+                "sen": 186,
+                "olmak": 173,
+                "bir": 163,
+                "bu": 142,
+                "yol": 101,
+                "ben": 99,
+                "vermek": 93,
+                "göz": 78,
+                "bakmak": 77,
+                "kendi": 76
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ben fero",
+            "_analyzed_word_count": 4488,
+            "_unique_word_count": 1118,
+            "_top_ten_words": {
+                "ben": 132,
+                "olmak": 81,
+                "demek": 75,
+                "bu": 68,
+                "sen": 55,
+                "yapmak": 52,
+                "çok": 51,
+                "iş": 49,
+                "gibi": 46,
+                "için": 44
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ezhel",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2036,
+            "_top_ten_words": {
+                "ben": 293,
+                "olmak": 200,
+                "sen": 172,
+                "demek": 150,
+                "bu": 120,
+                "her": 119,
+                "ne": 108,
+                "o": 103,
+                "hayır": 91,
+                "etmek": 86
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "anıl piyancı",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 1943,
+            "_top_ten_words": {
+                "ben": 237,
+                "bu": 207,
+                "sen": 163,
+                "olmak": 159,
+                "bir": 154,
+                "bakmak": 91,
+                "demek": 90,
+                "değil": 76,
+                "var": 72,
+                "her": 71
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şehinşah",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2932,
+            "_top_ten_words": {
+                "ben": 199,
+                "olmak": 129,
+                "bir": 124,
+                "sen": 119,
+                "bu": 111,
+                "o": 95,
+                "demek": 83,
+                "etmek": 82,
+                "rap": 78,
+                "ne": 76
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şanışer",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2047,
+            "_top_ten_words": {
+                "ben": 307,
+                "bu": 196,
+                "olmak": 183,
+                "sen": 137,
+                "bir": 118,
+                "var": 102,
+                "gelmek": 91,
+                "etmek": 90,
+                "yanmak": 82,
+                "yok": 79
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "contra",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2274,
+            "_top_ten_words": {
+                "ben": 337,
+                "bu": 234,
+                "olmak": 186,
+                "o": 134,
+                "ne": 118,
+                "gibi": 115,
+                "her": 114,
+                "sen": 113,
+                "demek": 104,
+                "yok": 99
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ceza",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 1920,
+            "_top_ten_words": {
+                "ben": 272,
+                "bir": 223,
+                "bu": 166,
+                "olmak": 163,
+                "sen": 133,
+                "her": 131,
+                "yok": 113,
+                "gelmek": 110,
+                "hadi": 98,
+                "var": 92
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sagopa kajmer",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 2235,
+            "_top_ten_words": {
+                "ben": 275,
+                "bir": 221,
+                "olmak": 157,
+                "bu": 118,
+                "sen": 93,
+                "bilmek": 87,
+                "etmek": 74,
+                "yok": 70,
+                "baş": 70,
+                "o": 66
+            }
+        }
+    ]
+};
 
 const utaStats = {
-    "stats": []
-}
-
-allButton = document.getElementById('all');
-fttButton = document.getElementById('first-ten-thousand');
-utaButton = document.getElementById('unique-to-all-chart');
-
-
-const images = [];
-let datasets = [];
-const y = {};
-
-allStats.stats.forEach((element, index) => {
-    let image = new Image(i, i);
-    image.src = `public/images/${element._artist_name}.png`;
-    images.push(image);
-
-    let yValue = 10;
-    let xValue = element._unique_word_count;
-    let name = element._artist_name;
-    let top_ten = element._top_ten_words;
-    let analyzed = element._analyzed_word_count;
-    let yCounter = 1;
-
-    a = name.split(' ');
-    x = a.map((element) => {
-        return element.charAt(0).toUpperCase() + element.slice(1);
-    });
-    name = x.join(' ');
-    while (true) {
-        let flag = true;
-        if (!(yValue in y)) {
-            y[yValue] = []
-        }
-        y[yValue].forEach((value) => {
-            if (Math.abs(value - xValue) < 330) {
-                if (yCounter % 2 === 1) {
-                    yValue += (3 * yCounter)
-                } else {
-                    yValue -= (3 * yCounter);
-                }
-                flag = false;
-                yCounter++;
+    "stats": [
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ağaçkakan",
+            "_analyzed_word_count": 10000,
+            "_unique_word_count": 3191,
+            "_  top_ten_words": {
+                "bir": 236,
+                "olmak": 149,
+                "ben": 145,
+                "bu": 119,
+                "o": 80,
+                "etmek": 79,
+                "yok": 78,
+                "ne": 65,
+                "iç": 59,
+                "var": 52
             }
+        },
+    ]
+};
+
+let images = [];
+let datasets = [];
+let y = {};
+
+(setStats = (stats) => {
+    datasets = [];
+    images = [];
+    y = {};
+    stats.stats.forEach((element, index) => {
+        let image = new Image(i, i);
+        image.src = `public/images/${element._artist_name}.png`;
+        images.push(image);
+
+        let yValue = 10;
+        let xValue = element._unique_word_count;
+        let name = element._artist_name;
+        let top_ten = element._top_ten_words;
+        let analyzed = element._analyzed_word_count;
+        let yCounter = 1;
+
+        name = name.split(' ');
+        let upperCaseName = name.map((element) => {
+            return element.charAt(0).toUpperCase() + element.slice(1);
         });
-        if (flag) break;
-    }
+        name = upperCaseName.join(' ');
+        while (true) {
+            let flag = true;
+            if (!(yValue in y)) {
+                y[yValue] = []
+            }
+            y[yValue].forEach((value) => {
+                if (Math.abs(value - xValue) < 330) {
+                    if (yCounter % 2 === 1) {
+                        yValue += (3 * yCounter)
+                    } else {
+                        yValue -= (3 * yCounter);
+                    }
+                    flag = false;
+                    yCounter++;
+                }
+            });
+            if (flag) break;
+        }
 
-
-    y[yValue].push(xValue);
-    let d = {
-        label: name,
-        data: [{x: xValue, y:yValue, r:30, analyzed: analyzed, top_ten: top_ten}]
-    };
-    datasets.push(d)
-    // console.log(d)
-});
+        y[yValue].push(xValue);
+        let d = {
+            label: name,
+            data: [{x: xValue, y:yValue, r:30, analyzed: analyzed, top_ten: top_ten}]
+        };
+        datasets.push(d)
+    });
+})(allStats);
 
 Chart.plugins.register({
     afterUpdate: function(chart) {
@@ -1402,18 +1962,23 @@ let lugatrapChart = new Chart(ctx, {
     }
 });
 
-fttButton.addEventListener('click', (e) => {
-    datasets = [
-        {
-            label: 'mekoko',
-            data:[{x: 10, y:20, r:30, analyzed:300, top_ten: {}}]
-        }
-    ]
+allButton.addEventListener('click', () => {
+    setStats(allStats);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.update();
-})
+});
 
+fttButton.addEventListener('click', () => {
+    setStats(fttStats);
+    lugatrapChart.data.datasets = datasets;
+    lugatrapChart.update();
+});
 
+utaButton.addEventListener('click', () => {
+    setStats(utaStats);
+    lugatrapChart.data.datasets = datasets;
+    lugatrapChart.update();
+});
 </script>
 </body>
 </html>
