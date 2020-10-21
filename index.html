@@ -3390,29 +3390,48 @@ const customTooltips = function(tooltip) {
     tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
 };
 
-let itemClick = (e) => {
-    canvas.style.display = 'none';
-    let height = parseInt(canvas.style.height.replace('px', ''));
-    let width = parseInt(canvas.style.width.replace('px', ''));
-    let imgHeight = (height / 1.9);
+let itemClick = (evt) => {
+    let firstPoint = lugatrapChart.getElementAtEvent(evt)[0];
+    if (firstPoint) {
+        let label = lugatrapChart.data.datasets[firstPoint._datasetIndex].label;
+        let value = lugatrapChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
 
-    canvas2.style.display = 'block';
-    canvas2.style.marginTop = '0 !important';
-    doughnutImage.style.display = 'block';
-    doughnutImage.style.position = 'absolute';
-    doughnutImage.style.height = imgHeight + 'px';
-    doughnutImage.style.width = imgHeight + 'px';
-    doughnutImage.style.marginTop = (height / 2) - (imgHeight / 2)  + 'px';
-    doughnutImage.style.marginLeft = (width / 2) - (imgHeight / 2) + 'px';
+        let labels = [];
+        let data = [];
 
-    let donutChart = new Chart(ctx2, {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                data: [10, 20, 30]
-            }]
+        console.log(value)
+        for (word in value.top_ten) {
+            labels.push(word);
+            data.push(value.top_ten[word]);
         }
-    });
+
+        canvas.style.display = 'none';
+        let height = parseInt(canvas.style.height.replace('px', ''));
+        let width = parseInt(canvas.style.width.replace('px', ''));
+        let imgHeight = (height / 1.9);
+
+        canvas2.style.display = 'block';
+        canvas2.style.marginTop = '0 !important';
+        doughnutImage.style.display = 'block';
+        doughnutImage.style.position = 'absolute';
+        doughnutImage.style.height = imgHeight + 'px';
+        doughnutImage.style.width = imgHeight + 'px';
+        doughnutImage.src = `public/images/${label}.png`
+        doughnutImage.style.marginTop = (height / 2) - (imgHeight / 2)  + 'px';
+        doughnutImage.style.marginLeft = (width / 2) - (imgHeight / 2) + 'px';
+
+        let donutChart = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: data,
+                    backgroundColor: ['#282828', '#505050', '#686868', '#3c3c3a', '#808080', '#A9A9A9', '#C0C0C0', '#D8D8D8', '#E8E8E8', '#F8F8F8'],
+                    borderAlign: 'inner'
+                }],
+                labels: labels
+            }
+        });
+    }
 };
 
 let lugatrapChart = new Chart(ctx, {
