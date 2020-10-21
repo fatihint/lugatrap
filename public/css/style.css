@@ -31,3 +31,13 @@ canvas{
 .jumbotron {
     padding: 2rem 2rem;
 }
+
+#myChart2 {
+    display: none;
+}
+
+#doughnut-image {
+    display: none;
+    /*position: absolute;*/
+
+}

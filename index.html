@@ -18,11 +18,17 @@
             <a class="btn btn-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a>
             <a class="btn btn-dark" id="unique-to-all" href="#">Eşsiz kelime / Toplam kelime</a>
             <canvas id="myChart" height="250" class="mt-3"></canvas>
+            <img id="doughnut-image" src="public/images/ağaçkakan.png" height="360" width="360" alt="">
+            <canvas id="myChart2" style="margin-top:0 !important" height="250" class="mt-3"></canvas>
         </div>
     </main>
 <script>
 const canvas = document.getElementById('myChart');
+const canvas2 = document.getElementById('myChart2');
 const ctx = canvas.getContext('2d');
+const ctx2 = canvas2.getContext('2d');
+const doughnutImage = document.getElementById("doughnut-image");
+
 const allButton = document.getElementById('all');
 const fttButton = document.getElementById('first-ten-thousand');
 const utaButton = document.getElementById('unique-to-all');
@@ -3284,7 +3290,6 @@ let y = {};
         let yCounter = 1;
 
         if (analyzed >= limit) {
-            console.log(xValue);
             let image = new Image(i, i);
             image.src = `public/images/${element._artist_name}.png`;
             images.push(image);
@@ -3321,14 +3326,6 @@ let y = {};
         }
     });
 })(allStats);
-
-Chart.plugins.register({
-    afterUpdate: function(chart) {
-        images.forEach((element, index) => {
-            chart.config.data.datasets[index]._meta[0].data[0]._model.pointStyle = element;
-        });
-    }
-});
 
 const customTooltips = function(tooltip) {
     let tooltipEl = document.getElementById('chartjs-tooltip');
@@ -3392,14 +3389,73 @@ const customTooltips = function(tooltip) {
     tooltipEl.style.fontStyle = tooltip._bodyFontStyle;
     tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
 };
+// Chart.plugins.register({
+//     id: 'p1',
+//     afterUpdate: function(chart) {
+//         images.forEach((element, index) => {
+//             chart.config.data.datasets[index]._meta[0].data[0]._model.pointStyle = element;
+//         });
+//     }
+// });
+let itemClick = (e) => {
+    canvas.style.display = 'none';
+    let height = parseInt(canvas.style.height.replace('px', ''));
+    let width = parseInt(canvas.style.width.replace('px', ''));
+
+    canvas2.style.display = 'block';
+    canvas2.style.marginTop = '0 !important';
+    doughnutImage.style.display = 'block';
+    doughnutImage.style.position = 'absolute';
+    let imgHeight = doughnutImage.clientHeight;
+    let imgWidth = doughnutImage.clientWidth;
+
+    // console.log(doughnutImage.clientHeight)
+
+    doughnutImage.style.marginTop = (height / 2) - (imgHeight / 2)  + 'px';
+    doughnutImage.style.marginLeft = (width / 2) - (imgWidth / 2) + 'px';
+
+    let donutChart = new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [10, 20, 30]
+        }]
+    }
+});
+
+    // d = lugatrapChart.getElementAtEvent(e)[0];
+    // if (d) {
+    //     var label = lugatrapChart.data.labels[d._index];
+    //     var value = lugatrapChart.data.datasets[d._datasetIndex].data[d._index];
+    //     console.log(label, value)
+    // }
+    // console.log(d);
+    // lugatrapChart.destroy();
+    // let donutChart = new Chart(ctx, {
+    //     type: 'doughnut',
+    //     data: {
+    //         datasets: [{
+    //             data: [10, 20, 30]
+    //         }]
+    //     }
+    // });
+};
 
 let lugatrapChart = new Chart(ctx, {
     type: 'bubble',
+    plugins: [{
+        afterUpdate: function(chart) {
+            images.forEach((element, index) => {
+                chart.config.data.datasets[index]._meta[0].data[0]._model.pointStyle = element;
+            });
+        }
+    }],
     responsive: true,
     data: {
         datasets: datasets
     },
     options: {
+        onClick: itemClick,
         legend: {
             display: false
         },
@@ -3441,9 +3497,12 @@ let lugatrapChart = new Chart(ctx, {
 });
 
 allButton.addEventListener('click', () => {
-    setStats(allStats);
-    lugatrapChart.data.datasets = datasets;
-    lugatrapChart.update();
+    canvas.style.display = 'block';
+    canvas2.style.display = 'none';
+    doughnutImage.style.display = 'none';
+    // setStats(allStats);
+    // lugatrapChart.data.datasets = datasets;
+    // lugatrapChart.update();
 });
 
 fttButton.addEventListener('click', () => {
