@@ -23,8 +23,8 @@
             <h1 id="artist-name" class="text-center mb-3"></h1>
             <h5 id="top-ten-title" class="text-center mb-5">En çok kullanılan 10 kelime:</h5>
             <canvas id="myChart" height="250" class="mt-3"></canvas>
-            <img id="doughnut-image" src="public/images/ağaçkakan.png" height="360" width="360" alt="">
-            <canvas id="myChart2" height="250" class="mt-3"></canvas>
+            <img id="doughnut-image" src="public/images/ağaçkakan.png" height="150" width="150" alt="">
+            <canvas id="myChart2" height="150" class="mt-3"></canvas>
         </div>
             <a href="#" class="my-4">Fatih Intekin</a>
     </main>
@@ -3420,7 +3420,7 @@ let itemClick = (evt) => {
         canvas.style.display = 'none';
         let height = parseInt(canvas.style.height.replace('px', ''));
         let width = parseInt(canvas.style.width.replace('px', ''));
-        let imgHeight = (height / 1.9);
+        let imgHeight = (height / 2.6);
 
         canvas2.style.display = 'block';
         canvas2.style.marginTop = '0 !important';
@@ -3429,7 +3429,7 @@ let itemClick = (evt) => {
         doughnutImage.style.height = imgHeight + 'px';
         doughnutImage.style.width = imgHeight + 'px';
         doughnutImage.src = `public/images/${label}.png`
-        doughnutImage.style.marginTop = (height / 2) - (imgHeight / 2)  + 'px';
+        doughnutImage.style.marginTop = (height / 2) - (imgHeight)  + 'px';
         doughnutImage.style.marginLeft = (width / 2) - (imgHeight / 2) + 'px';
         artistName.style.display = 'block';
         topTenTitle.style.display = 'block';
