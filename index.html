@@ -13,10 +13,13 @@
 <body>
     <main role="main" class="container" id="container">
         <div class="jumbotron">
-             <h2>LugaTrap</h2>
-            <a class="btn btn-dark" id="all" href="#">Tüm kelimeler</a>
-            <a class="btn btn-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a>
-            <a class="btn btn-dark" id="unique-to-all" href="#">Eşsiz kelime / Toplam kelime</a>
+             <h1>Türkçe Rap Kelime Dağarcığı</h1>
+             <div class="row mb-5 p-3">
+                 <ul class="nav">
+                     <li class="nav-item"><a class="nav-link btn btn-dark" id="all" href="#">Tüm kelimeler</a></li>
+                     <li class="nav-item"><a class="ml-3 nav-link btn btn-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a></li>
+                 </ul>
+             </div>
             <canvas id="myChart" height="250" class="mt-3"></canvas>
             <img id="doughnut-image" src="public/images/ağaçkakan.png" height="360" width="360" alt="">
             <canvas id="myChart2" style="margin-top:0 !important" height="250" class="mt-3"></canvas>
@@ -3425,12 +3428,42 @@ let itemClick = (evt) => {
             data: {
                 datasets: [{
                     data: data,
-                    backgroundColor: ['#282828', '#505050', '#686868', '#3c3c3a', '#808080', '#A9A9A9', '#C0C0C0', '#D8D8D8', '#E8E8E8', '#F8F8F8'],
-                    borderAlign: 'inner'
+                    backgroundColor: ['#282828', '#404040', '#606060', '#808080', '#A0A0A0', '#B8B8B8', '#D0D0D0', '#DCDCDC', '#E8E8E8', '#FFFFFF']
                 }],
                 labels: labels
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            count = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                            console.log(top_ten)
+                            let word = data.labels[tooltipItem.index]
+                            label = `<h4 class="text-center">${word || ''}: ${count}</h4>`;
+                            return label
+                        }
+                    },
+                    enabled: false,
+                    bodyFontSize: '0.5em',
+                    mode: 'index',
+                    position: 'nearest',
+                    custom: customTooltips
+                }
             }
         });
+    }
+};
+
+let itemHover = (evt) => {
+    let firstPoint = lugatrapChart.getElementAtEvent(evt)[0];
+    if (firstPoint) {
+        evt.target.style.cursor = 'pointer'
+    } else {
+        evt.target.style.cursor = 'default'
     }
 };
 
@@ -3449,6 +3482,7 @@ let lugatrapChart = new Chart(ctx, {
     },
     options: {
         onClick: itemClick,
+        onHover: itemHover,
         legend: {
             display: false
         },
@@ -3504,12 +3538,6 @@ fttButton.addEventListener('click', () => {
             suggestedMax: 3700
         }
     }];
-    lugatrapChart.update();
-});
-
-utaButton.addEventListener('click', () => {
-    setStats(utaStats);
-    lugatrapChart.data.datasets = datasets;
     lugatrapChart.update();
 });
 </script>
