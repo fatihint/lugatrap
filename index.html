@@ -16,14 +16,15 @@
              <h1>Türkçe Rap Kelime Dağarcığı</h1>
              <div class="row mb-5 p-3">
                  <ul class="nav">
-                     <li class="nav-item"><a class="nav-link btn btn-dark" id="all" href="#">Tüm kelimeler</a></li>
-                     <li class="nav-item"><a class="ml-3 nav-link btn btn-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a></li>
+                     <li class="nav-item"><a class="nav-link active btn btn-outline-dark" id="all" href="#">Tüm kelimeler</a></li>
+                     <li class="nav-item"><a class="ml-3 nav-link btn btn-outline-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a></li>
                  </ul>
              </div>
             <canvas id="myChart" height="250" class="mt-3"></canvas>
             <img id="doughnut-image" src="public/images/ağaçkakan.png" height="360" width="360" alt="">
-            <canvas id="myChart2" style="margin-top:0 !important" height="250" class="mt-3"></canvas>
+            <canvas id="myChart2" height="250" class="mt-3"></canvas>
         </div>
+            <a href="#" class="my-4">Fatih Intekin</a>
     </main>
 <script>
 const canvas = document.getElementById('myChart');
@@ -3393,6 +3394,8 @@ const customTooltips = function(tooltip) {
     tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
 };
 
+let donutChart;
+
 let itemClick = (evt) => {
     let firstPoint = lugatrapChart.getElementAtEvent(evt)[0];
     if (firstPoint) {
@@ -3423,7 +3426,7 @@ let itemClick = (evt) => {
         doughnutImage.style.marginTop = (height / 2) - (imgHeight / 2)  + 'px';
         doughnutImage.style.marginLeft = (width / 2) - (imgHeight / 2) + 'px';
 
-        let donutChart = new Chart(ctx2, {
+        donutChart = new Chart(ctx2, {
             type: 'doughnut',
             data: {
                 datasets: [{
@@ -3441,10 +3444,9 @@ let itemClick = (evt) => {
                     callbacks: {
                         label: function(tooltipItem, data) {
                             count = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                            console.log(top_ten)
-                            let word = data.labels[tooltipItem.index]
+                            let word = data.labels[tooltipItem.index];
                             label = `<h4 class="text-center">${word || ''}: ${count}</h4>`;
-                            return label
+                            return label;
                         }
                     },
                     enabled: false,
@@ -3504,12 +3506,8 @@ let lugatrapChart = new Chart(ctx, {
                     top_ten = data.datasets[tooltipItem.datasetIndex].data[0].top_ten;
                     let label = `<h4 class="text-center">${data.datasets[tooltipItem.datasetIndex].label || ''} </h4>`;
                     label += `<span class="text-danger"><b>Analiz edilen kelime: </b></span><span class="tt-value">${analyzed}</span><br>`;
-                    label += `<span class="text-danger"><b>Eşsiz kelime: </b></span><span class="tt-value">${tooltipItem.xLabel}</span><br><br>`;
-                    label += `<span class="text-danger"><b>En çok kullanılan 10 kelime:</b></span><br> `;
-                    for (const word in top_ten) {
-                        label += `<b>${word.toString()}:</b> <span class="tt-value">${top_ten[word]}</span><br>`
-                    }
-                    return label
+                    label += `<span class="text-danger"><b>Eşsiz kelime: </b></span><span class="tt-value">${tooltipItem.xLabel}</span><br>`;
+                    return label;
                 }
             },
             enabled: false,
@@ -3517,7 +3515,7 @@ let lugatrapChart = new Chart(ctx, {
             mode: 'dataset',
             position: 'nearest',
             xPadding: 10,
-            yPadding: 10,
+            yPadding: 8,
             custom: customTooltips
         }
     }
@@ -3525,11 +3523,29 @@ let lugatrapChart = new Chart(ctx, {
 
 allButton.addEventListener('click', () => {
     canvas.style.display = 'block';
-    canvas2.style.display = 'none';
     doughnutImage.style.display = 'none';
+    setStats(allStats);
+    lugatrapChart.data.datasets = datasets;
+    lugatrapChart.options.scales.xAxes = [{
+        ticks: {
+            suggestedMin: 0,
+            suggestedMax: 7000
+        }
+    }];
+    lugatrapChart.update();
+    if (donutChart) {
+        donutChart.destroy();
+    }
+    canvas2.style.display = "none !important;"
+    // const canvas2 = document.getElementById('myChart2');
+    // console.log(canvas2.style.display)
+    // canvas2.style.height = '0 !important'
+    // canvas2.style.color = 'red';
 });
 
 fttButton.addEventListener('click', () => {
+    canvas.style.display = 'block';
+    doughnutImage.style.display = 'none';
     setStats(fttStats, 10000);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
@@ -3539,6 +3555,10 @@ fttButton.addEventListener('click', () => {
         }
     }];
     lugatrapChart.update();
+    if (donutChart) {
+        donutChart.destroy();
+    }
+    canvas2.style.display = 'none !important';
 });
 </script>
 </body>
