@@ -38,6 +38,17 @@ canvas{
 
 #doughnut-image {
     display: none;
-    /*position: absolute;*/
+}
 
+#artist-name {
+    display: none;
+    font-weight: 700;
+}
+
+#top-ten-title {
+    display: none;
+}
+
+#project-title {
+    font-weight: 200;
 }
