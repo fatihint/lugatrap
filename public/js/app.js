@@ -5111,14 +5111,21 @@ allButton.addEventListener('click', () => {
     artistName.style.display = 'none';
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
-    graphDesc.innerHTML = 'MClerin düetler hariç ulaşılabilen <b>tüm</b> lirikleri kullanıldı. Sıralama eşsiz (unique) kelime sayısına göre.';
+    graphDesc.innerHTML = '<b>Tüm kelimeler</b> grafiği, MClerin düetler hariç tüm şarkılarındaki lirikleri kullanarak, <br> toplam eşsiz (unique) kelime sayılarını karşılaştırıyor.';
     setStats(allStats);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
         ticks: {
             suggestedMin: 0,
             suggestedMax: 7000
-        }
+        },
+        scaleLabel: {
+            display: true,
+            labelString: 'Eşsiz Kelime Sayısı',
+            fontSize: 15,
+            fontFamily: 'Helvetica',
+            padding: 10
+        },
     }];
 
     lugatrapChart.update();
@@ -5137,13 +5144,20 @@ fttButton.addEventListener('click', () => {
     artistName.style.display = 'none';
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
-    graphDesc.innerHTML = 'none';
+    graphDesc.innerHTML = 'MClerin şarkılarında geçen <b>ilk 10000 kelime</b> kullanılarak hesaplanan eşsiz kelime ';
     setStats(fttStats, 10000);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
         ticks: {
             suggestedMin: 1000,
             suggestedMax: 3500
+        },
+        scaleLabel: {
+            display: true,
+            labelString: 'Eşsiz Kelime Sayısı',
+            fontSize: 15,
+            fontFamily: 'Helvetica',
+            padding: 10
         }
     }];
     lugatrapChart.update();
@@ -5169,6 +5183,13 @@ ratioButton.addEventListener('click', () => {
         ticks: {
             suggestedMin: 5,
             suggestedMax: 35
+        },
+        scaleLabel: {
+            display: true,
+            labelString: 'Eşsiz Kelime Sayısının Analiz Edilen Kelime Sayısına Oranı',
+            fontSize: 15,
+            fontFamily: 'Helvetica',
+            padding: 10
         }
     }];
     lugatrapChart.options.scales.yAxes = [{
