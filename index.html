@@ -12,12 +12,13 @@
 </head>
 <body>
     <main role="main" class="container" id="container">
-        <div class="jumbotron">
+        <div class="jumbotron mb-0">
              <h1 id="project-title" class="text-center">Türkçe Rapte Kelime Dağarcığı</h1>
              <div class="mb-4 p-3">
                  <ul class="nav justify-content-center">
                      <li class="nav-item"><a class="nav-link active btn btn-outline-dark" id="all" href="#">Tüm kelimeler</a></li>
-                     <li class="nav-item"><a class="ml-3 nav-link btn btn-outline-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a></li>
+                     <li class="nav-item"><a class="ml-md-3 nav-link btn btn-outline-dark" id="first-ten-thousand" href="#">İlk 10.000 kelime</a></li>
+                     <li class="nav-item"><a class="ml-md-3 nav-link btn btn-outline-dark" id="ratio" href="#">Eşsiz kelime oranı</a></li>
                  </ul>
              </div>
             <h1 id="artist-name" class="text-center mb-3"></h1>
@@ -26,7 +27,12 @@
             <img id="doughnut-image" src="public/images/ağaçkakan.png" height="150" width="150" alt="">
             <canvas id="myChart2" height="150" class="mt-3"></canvas>
         </div>
-            <a href="#" class="my-4">Fatih Intekin</a>
+        <div class="row">
+            <div class="col-12 py-3">
+                <a href="https://fatihintek.in" class="my-4">Nedir?</a>
+                <a href="https://fatihintek.in" class="my-4 ml-md-3">Kaynak Kod</a>
+            </div>
+        </div>
     </main>
 <script>
 const canvas = document.getElementById('myChart');
@@ -39,6 +45,7 @@ const topTenTitle = document.getElementById('top-ten-title');
 
 const allButton = document.getElementById('all');
 const fttButton = document.getElementById('first-ten-thousand');
+const ratioButton = document.getElementById('ratio');
 
 const container = document.getElementById('container');
 const i = Math.round(container.offsetWidth / 25);
@@ -3420,7 +3427,7 @@ let itemClick = (evt) => {
         canvas.style.display = 'none';
         let height = parseInt(canvas.style.height.replace('px', ''));
         let width = parseInt(canvas.style.width.replace('px', ''));
-        let imgHeight = (height / 2.6);
+        let imgHeight = (height / 2.8);
 
         canvas2.style.display = 'block';
         canvas2.style.marginTop = '0 !important';
@@ -3429,7 +3436,7 @@ let itemClick = (evt) => {
         doughnutImage.style.height = imgHeight + 'px';
         doughnutImage.style.width = imgHeight + 'px';
         doughnutImage.src = `public/images/${label}.png`
-        doughnutImage.style.marginTop = (height / 2) - (imgHeight)  + 'px';
+        doughnutImage.style.marginTop = (height / 2) - (imgHeight) - 8 + 'px';
         doughnutImage.style.marginLeft = (width / 2) - (imgHeight / 2) + 'px';
         artistName.style.display = 'block';
         topTenTitle.style.display = 'block';
