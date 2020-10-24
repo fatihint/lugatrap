@@ -11,7 +11,7 @@ const canvas = document.getElementById('myChart');
       fttButton = document.getElementById('first-ten-thousand'),
       ratioButton = document.getElementById('ratio'),
       container = document.getElementById('container'),
-      i = Math.round(container.offsetWidth / 25);
+      i = Math.round(container.offsetWidth / 27);
 
 const allStats = {
     "stats": [
@@ -5111,7 +5111,7 @@ allButton.addEventListener('click', () => {
     artistName.style.display = 'none';
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
-    graphDesc.innerHTML = '<b>Tüm kelimeler</b> grafiği, MClerin düetler hariç tüm şarkılarındaki lirikleri kullanarak, <br> toplam eşsiz (unique) kelime sayılarını karşılaştırıyor.';
+    graphDesc.innerHTML = 'Tüm şarkılardaki eşsiz (unique) kelime sayısı karşılaştırması.';
     setStats(allStats);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
@@ -5144,7 +5144,7 @@ fttButton.addEventListener('click', () => {
     artistName.style.display = 'none';
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
-    graphDesc.innerHTML = 'MClerin şarkılarında geçen <b>ilk 10000 kelime</b> kullanılarak hesaplanan eşsiz kelime ';
+    graphDesc.innerHTML = 'İlk 10000 kelimedeki eşsiz kelime sayısı karşılaştırması.';
     setStats(fttStats, 10000);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
@@ -5186,7 +5186,7 @@ ratioButton.addEventListener('click', () => {
         },
         scaleLabel: {
             display: true,
-            labelString: 'Eşsiz Kelime Sayısının Analiz Edilen Kelime Sayısına Oranı',
+            labelString: 'Eşsiz kelime sayısının, analiz edilen toplam kelime sayısına oranı karşılaştırması.',
             fontSize: 15,
             fontFamily: 'Helvetica',
             padding: 10
