@@ -1367,6 +1367,24 @@ const allStats = {
     },
     {
         "_type": "artist_stats",
+        "_artist_name": "yung ouzo",
+        "_analyzed_word_count": 1519,
+        "_unique_word_count": 448,
+        "_top_ten_words": {
+            "hep": 60,
+            "peki": 48,
+            "ben": 45,
+            "ayran": 39,
+            "demek": 33,
+            "yok": 24,
+            "kafa": 23,
+            "şimdi": 21,
+            "el": 19,
+            "süzülmek": 19
+        }
+    },
+    {
+        "_type": "artist_stats",
         "_artist_name": "mrf",
         "_analyzed_word_count": 9785,
         "_unique_word_count": 1933,
@@ -1493,74 +1511,56 @@ const allStats = {
     },
     {
         "_type": "artist_stats",
-        "_artist_name": "diyar pala",
-        "_analyzed_word_count": 4609,
-        "_unique_word_count": 924,
-        "_top_ten_words": {
-            "ben": 274,
-            "sen": 115,
-            "olmak": 98,
-            "ne": 80,
-            "bir": 74,
-            "bu": 73,
-            "yok": 60,
-            "vermek": 57,
-            "no": 50,
-            "yo": 49
-        }
-    },
-    {
-        "_type": "artist_stats",
         "_artist_name": "sancak",
-        "_analyzed_word_count": 10000,
-        "_unique_word_count": 1217,
+        "_analyzed_word_count": 14952,
+        "_unique_word_count": 1696,
         "_top_ten_words": {
-            "sen": 382,
-            "ben": 355,
-            "bir": 194,
-            "olmak": 193,
-            "bu": 171,
-            "gelmek": 149,
-            "ne": 135,
-            "o": 128,
-            "gitmek": 115,
-            "yine": 113
+            "sen": 483,
+            "ben": 473,
+            "olmak": 279,
+            "bu": 277,
+            "bir": 274,
+            "o": 197,
+            "gelmek": 188,
+            "yok": 182,
+            "yine": 164,
+            "ne": 156
         }
     },
     {
         "_type": "artist_stats",
         "_artist_name": "taladro",
-        "_analyzed_word_count": 10000,
-        "_unique_word_count": 1948,
+        "_analyzed_word_count": 25956,
+        "_unique_word_count": 2981,
         "_top_ten_words": {
-            "ben": 304,
-            "sen": 289,
-            "bir": 248,
-            "bu": 189,
-            "olmak": 137,
-            "o": 133,
-            "ne": 109,
-            "kalp": 99,
-            "gelmek": 97,
-            "aşk": 94
+            "sen": 824,
+            "ben": 763,
+            "bir": 660,
+            "bu": 486,
+            "olmak": 407,
+            "ne": 274,
+            "o": 273,
+            "göz": 258,
+            "gelmek": 257,
+            "aşk": 224
         }
     },
     {
         "_type": "artist_stats",
         "_artist_name": "canfeza",
-        "_analyzed_word_count": 10000,
-        "_unique_word_count": 2103,
+        "_analyzed_word_count": 16824,
+        "_unique_word_count": 2705,
         "_top_ten_words": {
-            "sen": 360,
-            "ben": 358,
-            "bir": 234,
-            "olmak": 211,
-            "bu": 193,
-            "gelmek": 95,
-            "o": 92,
-            "var": 86,
-            "ne": 85,
-            "aşk": 82
+            "sen": 625,
+            "ben": 592,
+            "bir": 398,
+            "olmak": 354,
+            "bu": 304,
+            "var": 160,
+            "o": 154,
+            "ne": 149,
+            "gelmek": 136,
+            "aşk": 125
         }
     },
     {
@@ -3100,24 +3100,6 @@ const fttStats = {
     },
     {
         "_type": "artist_stats",
-        "_artist_name": "diyar pala",
-        "_analyzed_word_count": 4609,
-        "_unique_word_count": 924,
-        "_top_ten_words": {
-            "ben": 274,
-            "sen": 115,
-            "olmak": 98,
-            "ne": 80,
-            "bir": 74,
-            "bu": 73,
-            "yok": 60,
-            "vermek": 57,
-            "no": 50,
-            "yo": 49
-        }
-    },
-    {
-        "_type": "artist_stats",
         "_artist_name": "sancak",
         "_analyzed_word_count": 10000,
         "_unique_word_count": 1217,
@@ -3228,7 +3210,7 @@ const fttStats = {
 };
 
 const ratioStats = {
-    "stats": [
+"stats": [
     {
         "_type": "artist_stats",
         "_artist_name": "ağaçkakan",
@@ -4581,6 +4563,24 @@ const ratioStats = {
     },
     {
         "_type": "artist_stats",
+        "_artist_name": "yung ouzo",
+        "_analyzed_word_count": 1519,
+        "_unique_word_count": 448,
+        "_top_ten_words": {
+            "hep": 60,
+            "peki": 48,
+            "ben": 45,
+            "ayran": 39,
+            "demek": 33,
+            "yok": 24,
+            "kafa": 23,
+            "şimdi": 21,
+            "el": 19,
+            "süzülmek": 19
+        }
+    },
+    {
+        "_type": "artist_stats",
         "_artist_name": "mrf",
         "_analyzed_word_count": 9785,
         "_unique_word_count": 1933,
@@ -4707,74 +4707,56 @@ const ratioStats = {
     },
     {
         "_type": "artist_stats",
-        "_artist_name": "diyar pala",
-        "_analyzed_word_count": 4609,
-        "_unique_word_count": 924,
-        "_top_ten_words": {
-            "ben": 274,
-            "sen": 115,
-            "olmak": 98,
-            "ne": 80,
-            "bir": 74,
-            "bu": 73,
-            "yok": 60,
-            "vermek": 57,
-            "no": 50,
-            "yo": 49
-        }
-    },
-    {
-        "_type": "artist_stats",
         "_artist_name": "sancak",
-        "_analyzed_word_count": 10000,
-        "_unique_word_count": 1217,
+        "_analyzed_word_count": 14952,
+        "_unique_word_count": 1696,
         "_top_ten_words": {
-            "sen": 382,
-            "ben": 355,
-            "bir": 194,
-            "olmak": 193,
-            "bu": 171,
-            "gelmek": 149,
-            "ne": 135,
-            "o": 128,
-            "gitmek": 115,
-            "yine": 113
+            "sen": 483,
+            "ben": 473,
+            "olmak": 279,
+            "bu": 277,
+            "bir": 274,
+            "o": 197,
+            "gelmek": 188,
+            "yok": 182,
+            "yine": 164,
+            "ne": 156
         }
     },
     {
         "_type": "artist_stats",
         "_artist_name": "taladro",
-        "_analyzed_word_count": 10000,
-        "_unique_word_count": 1948,
+        "_analyzed_word_count": 25956,
+        "_unique_word_count": 2981,
         "_top_ten_words": {
-            "ben": 304,
-            "sen": 289,
-            "bir": 248,
-            "bu": 189,
-            "olmak": 137,
-            "o": 133,
-            "ne": 109,
-            "kalp": 99,
-            "gelmek": 97,
-            "aşk": 94
+            "sen": 824,
+            "ben": 763,
+            "bir": 660,
+            "bu": 486,
+            "olmak": 407,
+            "ne": 274,
+            "o": 273,
+            "göz": 258,
+            "gelmek": 257,
+            "aşk": 224
         }
     },
     {
         "_type": "artist_stats",
         "_artist_name": "canfeza",
-        "_analyzed_word_count": 10000,
-        "_unique_word_count": 2103,
+        "_analyzed_word_count": 16824,
+        "_unique_word_count": 2705,
         "_top_ten_words": {
-            "sen": 360,
-            "ben": 358,
-            "bir": 234,
-            "olmak": 211,
-            "bu": 193,
-            "gelmek": 95,
-            "o": 92,
-            "var": 86,
-            "ne": 85,
-            "aşk": 82
+            "sen": 625,
+            "ben": 592,
+            "bir": 398,
+            "olmak": 354,
+            "bu": 304,
+            "var": 160,
+            "o": 154,
+            "ne": 149,
+            "gelmek": 136,
+            "aşk": 125
         }
     },
     {
@@ -4866,7 +4848,7 @@ let images = [],
         
         if (analyzed >= limit) {
             let image = new Image(i, i);
-            image.src = `public/images/${element._artist_name}.png`;
+            image.src = `assets/images/${element._artist_name}.png`;
             images.push(image);
             name = name.split(' ');
             let upperCaseName = name.map((element) => {
@@ -4895,7 +4877,7 @@ let images = [],
             y[yValue].push(xValue);
             let d = {
                 label: name,
-                data: [{x: xValue, y:yValue, r:30, analyzed: analyzed, top_ten: top_ten}]
+                data: [{x: xValue, y:yValue, r:30, analyzed: analyzed, top_ten: top_ten, ratio: ratio}]
             };
             datasets.push(d)
         }
@@ -4995,7 +4977,7 @@ let itemClick = (evt) => {
         doughnutImage.style.position = 'absolute';
         doughnutImage.style.height = imgHeight + 'px';
         doughnutImage.style.width = imgHeight + 'px';
-        doughnutImage.src = `public/images/${label}.png`
+        doughnutImage.src = `assets/images/${label}.png`
         doughnutImage.style.marginTop = (height / 2) - (imgHeight) - 8 + 'px';
         doughnutImage.style.marginLeft = (width / 2) - (imgHeight / 2) + 'px';
         artistName.style.display = 'block';
@@ -5086,11 +5068,19 @@ let lugatrapChart = new Chart(ctx, {
         tooltips: {
             callbacks: {
                 label: function(tooltipItem, data) {
-                    analyzed = data.datasets[tooltipItem.datasetIndex].data[0].analyzed;
-                    top_ten = data.datasets[tooltipItem.datasetIndex].data[0].top_ten;
+                    let analyzed = data.datasets[tooltipItem.datasetIndex].data[0].analyzed,
+                        top_ten = data.datasets[tooltipItem.datasetIndex].data[0].top_ten,
+                        ratio = data.datasets[tooltipItem.datasetIndex].data[0].ratio,
+                        xLabel = '',
+                        uniqueLabel = 'Eşsiz kelime'
+                    if (ratio) {
+                        uniqueLabel += ' oranı'
+                        xLabel += '%'
+                    } 
+                    xLabel += tooltipItem.xLabel
                     let label = `<h4 class="text-center">${data.datasets[tooltipItem.datasetIndex].label || ''} </h4>`;
                     label += `<span class="text-danger"><b>Analiz edilen kelime: </b></span><span class="tt-value">${analyzed}</span><br>`;
-                    label += `<span class="text-danger"><b>Eşsiz kelime: </b></span><span class="tt-value">${tooltipItem.xLabel}</span><br>`;
+                    label += `<span class="text-danger"><b>${uniqueLabel}: </b></span><span class="tt-value">${xLabel}</span><br>`;
                     return label;
                 }
             },
@@ -5111,7 +5101,7 @@ allButton.addEventListener('click', () => {
     artistName.style.display = 'none';
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
-    graphDesc.innerHTML = 'Tüm şarkılardaki eşsiz (unique) kelime sayısı karşılaştırması.';
+    graphDesc.innerHTML = 'Tüm şarkılardaki eşsiz kelime sayısı karşılaştırması.';
     setStats(allStats);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
@@ -5176,7 +5166,7 @@ ratioButton.addEventListener('click', () => {
     artistName.style.display = 'none';
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
-    graphDesc.innerHTML = 'ratio';
+    graphDesc.innerHTML = 'Eşsiz kelime sayısının, analiz edilen toplam kelime sayısına oranı karşılaştırması.';
     setStats(ratioStats, 5000, 'ratio');
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
@@ -5186,7 +5176,7 @@ ratioButton.addEventListener('click', () => {
         },
         scaleLabel: {
             display: true,
-            labelString: 'Eşsiz kelime sayısının, analiz edilen toplam kelime sayısına oranı karşılaştırması.',
+            labelString: 'Eşsiz kelime sayısı / Analiz edilen toplam kelime sayısı',
             fontSize: 15,
             fontFamily: 'Helvetica',
             padding: 10
