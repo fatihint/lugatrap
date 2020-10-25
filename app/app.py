@@ -94,12 +94,16 @@ class App:
         self.data['stats'] = self.parse_stats(stats_result)
         artists_to_analyze = self.divide_artists_to_analyze()
         nlp = NLP(artists=artists_to_analyze, analyze_threshold=analyze_threshold)
-        results = nlp.start()
-        processed_stats = nlp.process_stats(results)
-        for stat in processed_stats:
-            self.data['stats'].append(stat)
-        self.save('stats', stats_result)
-        print('Analyzes saved!')
+        try:
+            results = nlp.start()
+        except Exception as e:
+            print('Error: To be able to analyze lyrics, start Zemberek app with `StartGrpcServer` parameter!\n\n')
+        else:
+            processed_stats = nlp.process_stats(results)
+            for stat in processed_stats:
+                self.data['stats'].append(stat)
+            self.save('stats', stats_result)
+            print('Analyzes saved!')
 
     def parse_stats(self, stats_result):
         """
