@@ -1,0 +1,1624 @@
+{
+    "stats": [
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ağaçkakan",
+            "_analyzed_word_count": 13311,
+            "_unique_word_count": 3612,
+            "_top_ten_words": {
+                "bir": 314,
+                "ben": 200,
+                "olmak": 196,
+                "bu": 167,
+                "yok": 102,
+                "etmek": 99,
+                "ne": 92,
+                "o": 90,
+                "iç": 78,
+                "sen": 72
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "mode xl",
+            "_analyzed_word_count": 15789,
+            "_unique_word_count": 2810,
+            "_top_ten_words": {
+                "sen": 322,
+                "olmak": 257,
+                "bir": 254,
+                "bu": 241,
+                "ben": 226,
+                "yol": 176,
+                "bakmak": 132,
+                "vermek": 119,
+                "kalmak": 119,
+                "göz": 113
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ben fero",
+            "_analyzed_word_count": 4488,
+            "_unique_word_count": 1118,
+            "_top_ten_words": {
+                "ben": 132,
+                "olmak": 81,
+                "demek": 75,
+                "bu": 68,
+                "sen": 55,
+                "yapmak": 52,
+                "çok": 51,
+                "iş": 49,
+                "gibi": 46,
+                "için": 44
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ezhel",
+            "_analyzed_word_count": 11321,
+            "_unique_word_count": 2170,
+            "_top_ten_words": {
+                "ben": 327,
+                "olmak": 221,
+                "sen": 181,
+                "demek": 156,
+                "bu": 131,
+                "her": 130,
+                "o": 116,
+                "ne": 113,
+                "bir": 92,
+                "yapmak": 91
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "anıl piyancı",
+            "_analyzed_word_count": 13285,
+            "_unique_word_count": 2353,
+            "_top_ten_words": {
+                "ben": 291,
+                "bu": 280,
+                "olmak": 217,
+                "bir": 215,
+                "sen": 208,
+                "yok": 114,
+                "bakmak": 111,
+                "demek": 103,
+                "değil": 95,
+                "her": 94
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şehinşah",
+            "_analyzed_word_count": 28720,
+            "_unique_word_count": 5000,
+            "_top_ten_words": {
+                "ben": 564,
+                "olmak": 360,
+                "bir": 343,
+                "bu": 335,
+                "sen": 318,
+                "o": 250,
+                "ne": 229,
+                "rap": 214,
+                "etmek": 201,
+                "yapmak": 191
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şanışer",
+            "_analyzed_word_count": 28914,
+            "_unique_word_count": 3777,
+            "_top_ten_words": {
+                "ben": 954,
+                "olmak": 554,
+                "bu": 513,
+                "sen": 506,
+                "bir": 300,
+                "var": 285,
+                "yok": 233,
+                "gelmek": 219,
+                "o": 212,
+                "her": 206
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "contra",
+            "_analyzed_word_count": 21431,
+            "_unique_word_count": 3089,
+            "_top_ten_words": {
+                "ben": 647,
+                "bu": 569,
+                "olmak": 356,
+                "o": 285,
+                "yok": 246,
+                "gibi": 241,
+                "sen": 236,
+                "her": 222,
+                "ne": 209,
+                "bok": 183
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ceza",
+            "_analyzed_word_count": 50527,
+            "_unique_word_count": 4862,
+            "_top_ten_words": {
+                "ben": 1476,
+                "bir": 1140,
+                "bu": 933,
+                "olmak": 924,
+                "sen": 703,
+                "her": 546,
+                "yok": 502,
+                "var": 444,
+                "gelmek": 432,
+                "bakmak": 424
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sagopa kajmer",
+            "_analyzed_word_count": 75818,
+            "_unique_word_count": 6565,
+            "_top_ten_words": {
+                "ben": 1712,
+                "bir": 1437,
+                "olmak": 1351,
+                "bu": 1018,
+                "sen": 922,
+                "etmek": 503,
+                "kendi": 482,
+                "o": 480,
+                "var": 472,
+                "her": 468
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "killa hakan",
+            "_analyzed_word_count": 20630,
+            "_unique_word_count": 2959,
+            "_top_ten_words": {
+                "olmak": 382,
+                "bir": 378,
+                "ben": 303,
+                "sen": 302,
+                "bakmak": 246,
+                "bu": 238,
+                "gelmek": 172,
+                "demek": 149,
+                "yer": 148,
+                "göz": 148
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "khontkar",
+            "_analyzed_word_count": 14915,
+            "_unique_word_count": 2319,
+            "_top_ten_words": {
+                "ben": 417,
+                "sen": 299,
+                "bakmak": 230,
+                "yok": 221,
+                "bu": 218,
+                "olmak": 173,
+                "o": 159,
+                "yine": 119,
+                "i": 118,
+                "ne": 113
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "norm ender",
+            "_analyzed_word_count": 10958,
+            "_unique_word_count": 2234,
+            "_top_ten_words": {
+                "bu": 343,
+                "ben": 310,
+                "sen": 201,
+                "olmak": 186,
+                "bir": 175,
+                "o": 140,
+                "bakmak": 101,
+                "yok": 101,
+                "demek": 90,
+                "ne": 89
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "patron",
+            "_analyzed_word_count": 25629,
+            "_unique_word_count": 3840,
+            "_top_ten_words": {
+                "ben": 710,
+                "sen": 477,
+                "bu": 452,
+                "olmak": 373,
+                "bir": 262,
+                "o": 247,
+                "yok": 245,
+                "para": 215,
+                "her": 195,
+                "ne": 188
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "tepki",
+            "_analyzed_word_count": 12173,
+            "_unique_word_count": 2123,
+            "_top_ten_words": {
+                "bu": 411,
+                "olmak": 211,
+                "ben": 192,
+                "sen": 150,
+                "her": 134,
+                "o": 131,
+                "ne": 113,
+                "benji": 105,
+                "daha": 100,
+                "yine": 97
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sokrat st",
+            "_analyzed_word_count": 14172,
+            "_unique_word_count": 2159,
+            "_top_ten_words": {
+                "ben": 485,
+                "bu": 300,
+                "olmak": 285,
+                "sen": 275,
+                "bir": 207,
+                "değil": 154,
+                "yok": 136,
+                "ne": 134,
+                "hayat": 124,
+                "her": 122
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "kamufle",
+            "_analyzed_word_count": 8399,
+            "_unique_word_count": 1921,
+            "_top_ten_words": {
+                "ben": 226,
+                "olmak": 175,
+                "bu": 158,
+                "bir": 124,
+                "sen": 100,
+                "ne": 81,
+                "etmek": 79,
+                "yok": 78,
+                "var": 76,
+                "her": 69
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "no.1",
+            "_analyzed_word_count": 39726,
+            "_unique_word_count": 4172,
+            "_top_ten_words": {
+                "ben": 1214,
+                "bu": 794,
+                "sen": 730,
+                "olmak": 722,
+                "bir": 420,
+                "yok": 348,
+                "gelmek": 304,
+                "gibi": 296,
+                "bakmak": 276,
+                "her": 264
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "server uraz,pit10",
+            "_analyzed_word_count": 30931,
+            "_unique_word_count": 4257,
+            "_top_ten_words": {
+                "ben": 868,
+                "bu": 601,
+                "bir": 514,
+                "olmak": 506,
+                "sen": 412,
+                "o": 292,
+                "yok": 260,
+                "her": 231,
+                "var": 220,
+                "kalmak": 218
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "xir,xir gökdeniz",
+            "_analyzed_word_count": 13343,
+            "_unique_word_count": 2315,
+            "_top_ten_words": {
+                "ben": 459,
+                "bu": 349,
+                "olmak": 309,
+                "sen": 298,
+                "bir": 177,
+                "ne": 147,
+                "o": 140,
+                "yok": 130,
+                "her": 119,
+                "gelmek": 111
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "grogi",
+            "_analyzed_word_count": 7081,
+            "_unique_word_count": 1804,
+            "_top_ten_words": {
+                "bu": 135,
+                "ben": 130,
+                "olmak": 124,
+                "yok": 92,
+                "o": 88,
+                "sen": 77,
+                "bir": 70,
+                "gün": 69,
+                "her": 64,
+                "kafa": 64
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ceg,cegıd",
+            "_analyzed_word_count": 22601,
+            "_unique_word_count": 3614,
+            "_top_ten_words": {
+                "ben": 1015,
+                "bu": 848,
+                "olmak": 327,
+                "o": 323,
+                "değil": 234,
+                "vermek": 217,
+                "gibi": 199,
+                "etmek": 172,
+                "her": 169,
+                "sen": 166
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "saian",
+            "_analyzed_word_count": 14957,
+            "_unique_word_count": 3620,
+            "_top_ten_words": {
+                "ben": 400,
+                "bir": 342,
+                "sen": 296,
+                "bu": 155,
+                "olmak": 145,
+                "gelmek": 112,
+                "biz": 103,
+                "var": 100,
+                "bakmak": 99,
+                "her": 95
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "aga b",
+            "_analyzed_word_count": 4899,
+            "_unique_word_count": 1455,
+            "_top_ten_words": {
+                "bu": 147,
+                "ne": 93,
+                "biz": 61,
+                "yok": 54,
+                "bir": 51,
+                "ben": 51,
+                "sen": 49,
+                "o": 48,
+                "olmak": 46,
+                "daha": 46
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "şam,şam (tur)",
+            "_analyzed_word_count": 2144,
+            "_unique_word_count": 704,
+            "_top_ten_words": {
+                "bu": 92,
+                "bir": 50,
+                "ben": 48,
+                "olmak": 46,
+                "sen": 27,
+                "bakmak": 26,
+                "yok": 23,
+                "yol": 23,
+                "yaşamak": 21,
+                "hayat": 19
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "fuat",
+            "_analyzed_word_count": 8440,
+            "_unique_word_count": 2761,
+            "_top_ten_words": {
+                "olmak": 126,
+                "gibi": 99,
+                "hepsi": 94,
+                "ben": 80,
+                "gelmek": 78,
+                "sen": 73,
+                "yok": 67,
+                "bir": 67,
+                "fuat": 64,
+                "el": 64
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ayben",
+            "_analyzed_word_count": 10374,
+            "_unique_word_count": 1937,
+            "_top_ten_words": {
+                "ben": 275,
+                "olmak": 173,
+                "bu": 165,
+                "var": 160,
+                "sen": 160,
+                "rap": 148,
+                "bir": 143,
+                "o": 129,
+                "gelmek": 128,
+                "her": 118
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "hidra",
+            "_analyzed_word_count": 33531,
+            "_unique_word_count": 4567,
+            "_top_ten_words": {
+                "ben": 826,
+                "bu": 800,
+                "bir": 447,
+                "olmak": 442,
+                "o": 338,
+                "yok": 325,
+                "var": 305,
+                "sen": 303,
+                "demek": 263,
+                "gibi": 254
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "joker,joker (türkiye)",
+            "_analyzed_word_count": 25595,
+            "_unique_word_count": 3681,
+            "_top_ten_words": {
+                "ben": 628,
+                "bu": 626,
+                "olmak": 359,
+                "sen": 321,
+                "bir": 273,
+                "etmek": 240,
+                "yapmak": 234,
+                "demek": 190,
+                "ne": 185,
+                "değil": 178
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "allame",
+            "_analyzed_word_count": 27679,
+            "_unique_word_count": 4666,
+            "_top_ten_words": {
+                "bu": 606,
+                "ben": 572,
+                "olmak": 472,
+                "sen": 439,
+                "bir": 367,
+                "o": 226,
+                "yok": 220,
+                "etmek": 202,
+                "vermek": 196,
+                "var": 182
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sansar salvo",
+            "_analyzed_word_count": 32654,
+            "_unique_word_count": 4074,
+            "_top_ten_words": {
+                "bu": 729,
+                "ben": 685,
+                "olmak": 648,
+                "bir": 381,
+                "sen": 350,
+                "her": 283,
+                "bakmak": 274,
+                "o": 261,
+                "var": 247,
+                "yok": 222
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "keişan",
+            "_analyzed_word_count": 5310,
+            "_unique_word_count": 1435,
+            "_top_ten_words": {
+                "ben": 145,
+                "bu": 118,
+                "sen": 74,
+                "olmak": 72,
+                "gucci": 61,
+                "demek": 53,
+                "hep": 52,
+                "gibi": 47,
+                "var": 45,
+                "istemek": 45
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "hayki",
+            "_analyzed_word_count": 24285,
+            "_unique_word_count": 3440,
+            "_top_ten_words": {
+                "ben": 810,
+                "sen": 525,
+                "bu": 524,
+                "bir": 373,
+                "olmak": 352,
+                "ne": 227,
+                "yok": 225,
+                "o": 214,
+                "her": 169,
+                "bakmak": 163
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "dr. fuchs",
+            "_analyzed_word_count": 13397,
+            "_unique_word_count": 1950,
+            "_top_ten_words": {
+                "ben": 373,
+                "bu": 272,
+                "sen": 270,
+                "olmak": 225,
+                "bir": 212,
+                "her": 158,
+                "bilmek": 145,
+                "basmak": 132,
+                "gün": 126,
+                "o": 118
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "yener çevik",
+            "_analyzed_word_count": 9320,
+            "_unique_word_count": 2195,
+            "_top_ten_words": {
+                "ben": 172,
+                "sen": 150,
+                "olmak": 135,
+                "bu": 110,
+                "bir": 81,
+                "demek": 77,
+                "var": 73,
+                "gitmek": 70,
+                "gelmek": 67,
+                "yol": 64
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "farazi v kayra",
+            "_analyzed_word_count": 10355,
+            "_unique_word_count": 2057,
+            "_top_ten_words": {
+                "bir": 361,
+                "ben": 249,
+                "bu": 206,
+                "olmak": 156,
+                "sen": 135,
+                "o": 110,
+                "gelmek": 103,
+                "var": 99,
+                "bakmak": 84,
+                "yok": 79
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "da poet",
+            "_analyzed_word_count": 7877,
+            "_unique_word_count": 2075,
+            "_top_ten_words": {
+                "ben": 177,
+                "bu": 112,
+                "olmak": 102,
+                "sen": 94,
+                "bir": 93,
+                "yine": 71,
+                "yok": 69,
+                "var": 67,
+                "vermek": 67,
+                "rap": 61
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "karaçalı",
+            "_analyzed_word_count": 11048,
+            "_unique_word_count": 3250,
+            "_top_ten_words": {
+                "bir": 232,
+                "ben": 198,
+                "olmak": 138,
+                "sen": 124,
+                "bu": 116,
+                "o": 89,
+                "yok": 60,
+                "her": 58,
+                "etmek": 56,
+                "vermek": 56
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ados",
+            "_analyzed_word_count": 19417,
+            "_unique_word_count": 2983,
+            "_top_ten_words": {
+                "ben": 492,
+                "bir": 456,
+                "bu": 393,
+                "olmak": 346,
+                "sen": 257,
+                "yok": 207,
+                "o": 198,
+                "ne": 171,
+                "insan": 161,
+                "var": 157
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ethnique punch",
+            "_analyzed_word_count": 3985,
+            "_unique_word_count": 1979,
+            "_top_ten_words": {
+                "olmak": 65,
+                "bu": 63,
+                "bir": 55,
+                "ben": 35,
+                "ne": 24,
+                "kalmak": 24,
+                "iç": 20,
+                "zaman": 18,
+                "o": 18,
+                "her": 18
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "eypio",
+            "_analyzed_word_count": 5928,
+            "_unique_word_count": 1600,
+            "_top_ten_words": {
+                "ben": 168,
+                "bu": 123,
+                "biz": 93,
+                "var": 92,
+                "olmak": 82,
+                "sen": 81,
+                "yok": 69,
+                "demek": 60,
+                "gelmek": 59,
+                "bir": 52
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ati242",
+            "_analyzed_word_count": 8692,
+            "_unique_word_count": 1869,
+            "_top_ten_words": {
+                "bu": 173,
+                "kafa": 140,
+                "ben": 139,
+                "sen": 135,
+                "ey": 121,
+                "o": 105,
+                "yok": 92,
+                "ah": 90,
+                "olmak": 89,
+                "bakmak": 78
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "beta",
+            "_analyzed_word_count": 14825,
+            "_unique_word_count": 2660,
+            "_top_ten_words": {
+                "ben": 713,
+                "sen": 481,
+                "olmak": 343,
+                "bu": 252,
+                "bir": 180,
+                "o": 159,
+                "yok": 157,
+                "yapmak": 146,
+                "var": 130,
+                "çok": 119
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "heja",
+            "_analyzed_word_count": 419,
+            "_unique_word_count": 183,
+            "_top_ten_words": {
+                "biri": 21,
+                "iç": 21,
+                "bugün": 18,
+                "ben": 15,
+                "kan": 15,
+                "toz": 13,
+                "ter": 12,
+                "var": 11,
+                "bakmak": 10,
+                "kurşun": 8
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "gazapizm",
+            "_analyzed_word_count": 15762,
+            "_unique_word_count": 2726,
+            "_top_ten_words": {
+                "bir": 472,
+                "ben": 337,
+                "olmak": 299,
+                "bu": 293,
+                "sen": 180,
+                "yok": 175,
+                "bakmak": 153,
+                "yol": 141,
+                "kalmak": 134,
+                "o": 126
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "istanbul trip",
+            "_analyzed_word_count": 1060,
+            "_unique_word_count": 523,
+            "_top_ten_words": {
+                "bu": 23,
+                "olmak": 20,
+                "ateş": 17,
+                "yak": 16,
+                "sokak": 16,
+                "bir": 13,
+                "sen": 13,
+                "ben": 11,
+                "ne": 11,
+                "biz": 11
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "maestro",
+            "_analyzed_word_count": 2534,
+            "_unique_word_count": 1040,
+            "_top_ten_words": {
+                "ben": 57,
+                "bu": 51,
+                "sokak": 42,
+                "bakmak": 33,
+                "olmak": 29,
+                "bir": 28,
+                "el": 26,
+                "rap": 25,
+                "var": 25,
+                "la": 21
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "zen-g",
+            "_analyzed_word_count": 898,
+            "_unique_word_count": 464,
+            "_top_ten_words": {
+                "gelmek": 20,
+                "bir": 19,
+                "bu": 18,
+                "olmak": 17,
+                "ben": 15,
+                "yok": 14,
+                "sen": 14,
+                "berlin": 14,
+                "ey": 13,
+                "hast": 12
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "delaredo",
+            "_analyzed_word_count": 928,
+            "_unique_word_count": 394,
+            "_top_ten_words": {
+                "yol": 24,
+                "bu": 18,
+                "olmak": 17,
+                "iç": 16,
+                "almak": 16,
+                "biz": 14,
+                "etmek": 13,
+                "yok": 12,
+                "al": 12,
+                "oyun": 11
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "burak king",
+            "_analyzed_word_count": 2893,
+            "_unique_word_count": 710,
+            "_top_ten_words": {
+                "var": 107,
+                "sen": 95,
+                "ben": 90,
+                "ne": 79,
+                "bir": 54,
+                "mı": 47,
+                "gibi": 44,
+                "dert": 43,
+                "demek": 41,
+                "bu": 36
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "lil zey",
+            "_analyzed_word_count": 685,
+            "_unique_word_count": 327,
+            "_top_ten_words": {
+                "o": 27,
+                "ben": 17,
+                "yok": 16,
+                "bu": 14,
+                "bakmak": 13,
+                "hep": 11,
+                "bir": 11,
+                "almak": 11,
+                "el": 10,
+                "olmak": 9
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "burry soprano",
+            "_analyzed_word_count": 3021,
+            "_unique_word_count": 872,
+            "_top_ten_words": {
+                "bu": 83,
+                "ben": 83,
+                "yok": 47,
+                "için": 46,
+                "her": 43,
+                "hep": 40,
+                "olmak": 39,
+                "yapmak": 39,
+                "çıkmak": 36,
+                "bakmak": 35
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "leşker asakir",
+            "_analyzed_word_count": 482,
+            "_unique_word_count": 349,
+            "_top_ten_words": {
+                "bu": 11,
+                "ben": 10,
+                "her": 7,
+                "bir": 5,
+                "sen": 5,
+                "kan": 5,
+                "kalkmak": 4,
+                "gibi": 4,
+                "kalp": 4,
+                "karşı": 3
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "tankurt manas",
+            "_analyzed_word_count": 14986,
+            "_unique_word_count": 3203,
+            "_top_ten_words": {
+                "ben": 485,
+                "bu": 370,
+                "olmak": 184,
+                "sen": 171,
+                "yok": 160,
+                "değil": 150,
+                "gibi": 137,
+                "bakmak": 128,
+                "bir": 116,
+                "yol": 112
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "motive,motive (m.o.b)",
+            "_analyzed_word_count": 968,
+            "_unique_word_count": 467,
+            "_top_ten_words": {
+                "bu": 18,
+                "değil": 18,
+                "ben": 16,
+                "olmak": 15,
+                "sen": 15,
+                "aşk": 13,
+                "ah": 12,
+                "gibi": 11,
+                "istemek": 11,
+                "için": 11
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "massaka",
+            "_analyzed_word_count": 5510,
+            "_unique_word_count": 1324,
+            "_top_ten_words": {
+                "die": 229,
+                "demek": 163,
+                "i̇st": 78,
+                "sokak": 59,
+                "biz": 56,
+                "ben": 53,
+                "und": 51,
+                "in": 51,
+                "das": 48,
+                "sen": 47
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "uzi212",
+            "_analyzed_word_count": 2655,
+            "_unique_word_count": 816,
+            "_top_ten_words": {
+                "olmak": 49,
+                "yok": 37,
+                "bu": 33,
+                "my": 29,
+                "sen": 27,
+                "bakmak": 26,
+                "her": 26,
+                "var": 26,
+                "ben": 23,
+                "mi": 22
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "muşta",
+            "_analyzed_word_count": 2079,
+            "_unique_word_count": 822,
+            "_top_ten_words": {
+                "ben": 88,
+                "bu": 60,
+                "olmak": 49,
+                "o": 35,
+                "muş": 30,
+                "bir": 29,
+                "serseri": 23,
+                "sokak": 22,
+                "vermek": 20,
+                "sen": 20
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ozbi",
+            "_analyzed_word_count": 10024,
+            "_unique_word_count": 2024,
+            "_top_ten_words": {
+                "ben": 290,
+                "bir": 174,
+                "olmak": 172,
+                "bu": 169,
+                "sen": 161,
+                "o": 133,
+                "gibi": 104,
+                "demek": 91,
+                "gelmek": 90,
+                "yok": 79
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sehabe",
+            "_analyzed_word_count": 22533,
+            "_unique_word_count": 3261,
+            "_top_ten_words": {
+                "ben": 778,
+                "sen": 449,
+                "olmak": 415,
+                "bu": 345,
+                "bir": 270,
+                "demek": 257,
+                "yok": 243,
+                "o": 202,
+                "bakmak": 199,
+                "gelmek": 184
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ahiyan",
+            "_analyzed_word_count": 5123,
+            "_unique_word_count": 1514,
+            "_top_ten_words": {
+                "ben": 112,
+                "olmak": 99,
+                "bu": 81,
+                "ne": 77,
+                "sen": 61,
+                "o": 46,
+                "etmek": 45,
+                "demek": 44,
+                "çok": 37,
+                "gün": 37
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "aspova",
+            "_analyzed_word_count": 12471,
+            "_unique_word_count": 1799,
+            "_top_ten_words": {
+                "bu": 288,
+                "olmak": 238,
+                "ben": 228,
+                "bir": 169,
+                "sen": 147,
+                "yok": 133,
+                "her": 122,
+                "ey": 120,
+                "o": 119,
+                "hep": 113
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "çağrı sinci",
+            "_analyzed_word_count": 7070,
+            "_unique_word_count": 1880,
+            "_top_ten_words": {
+                "ben": 151,
+                "sen": 129,
+                "bu": 97,
+                "olmak": 96,
+                "bir": 78,
+                "demek": 71,
+                "biz": 68,
+                "var": 63,
+                "o": 60,
+                "etmek": 59
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "stabil",
+            "_analyzed_word_count": 6634,
+            "_unique_word_count": 1549,
+            "_top_ten_words": {
+                "ben": 263,
+                "bu": 146,
+                "olmak": 106,
+                "sen": 85,
+                "var": 77,
+                "değil": 71,
+                "o": 70,
+                "kadar": 66,
+                "bir": 60,
+                "hayat": 58
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "tahribad-ı isyan",
+            "_analyzed_word_count": 6264,
+            "_unique_word_count": 1590,
+            "_top_ten_words": {
+                "ben": 178,
+                "bu": 164,
+                "olmak": 108,
+                "o": 105,
+                "sen": 92,
+                "biz": 79,
+                "ghetto": 78,
+                "ne": 77,
+                "bir": 69,
+                "demek": 60
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "lider",
+            "_analyzed_word_count": 1926,
+            "_unique_word_count": 734,
+            "_top_ten_words": {
+                "bir": 76,
+                "olmak": 54,
+                "vay": 37,
+                "ben": 36,
+                "dünya": 29,
+                "sen": 28,
+                "gelmek": 24,
+                "bu": 24,
+                "her": 21,
+                "gitmek": 17
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "emboli",
+            "_analyzed_word_count": 3775,
+            "_unique_word_count": 1752,
+            "_top_ten_words": {
+                "bu": 63,
+                "ben": 54,
+                "sen": 41,
+                "gibi": 32,
+                "olmak": 31,
+                "bir": 30,
+                "vermek": 28,
+                "propaganda": 28,
+                "sokak": 24,
+                "kafa": 20
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "aksan",
+            "_analyzed_word_count": 2669,
+            "_unique_word_count": 662,
+            "_top_ten_words": {
+                "bu": 117,
+                "ben": 97,
+                "olmak": 53,
+                "o": 42,
+                "her": 41,
+                "var": 36,
+                "b": 32,
+                "yüz": 32,
+                "bir": 31,
+                "yok": 28
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "kozmos",
+            "_analyzed_word_count": 2174,
+            "_unique_word_count": 812,
+            "_top_ten_words": {
+                "ben": 58,
+                "bir": 57,
+                "olmak": 38,
+                "sen": 35,
+                "bu": 34,
+                "bakmak": 33,
+                "yok": 29,
+                "her": 27,
+                "var": 26,
+                "vermek": 22
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "metth",
+            "_analyzed_word_count": 1579,
+            "_unique_word_count": 399,
+            "_top_ten_words": {
+                "biz": 92,
+                "gang": 88,
+                "bura": 81,
+                "ben": 39,
+                "manolya": 32,
+                "sen": 27,
+                "bu": 23,
+                "için": 18,
+                "çekmek": 17,
+                "ne": 17
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "velet",
+            "_analyzed_word_count": 7786,
+            "_unique_word_count": 1497,
+            "_top_ten_words": {
+                "ben": 306,
+                "bu": 189,
+                "sen": 168,
+                "olmak": 159,
+                "bir": 153,
+                "demek": 93,
+                "var": 87,
+                "o": 71,
+                "gelmek": 67,
+                "vermek": 65
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ilke",
+            "_analyzed_word_count": 2002,
+            "_unique_word_count": 673,
+            "_top_ten_words": {
+                "ben": 50,
+                "yok": 50,
+                "olmak": 45,
+                "bu": 42,
+                "yol": 37,
+                "bakmak": 26,
+                "var": 24,
+                "o": 23,
+                "her": 23,
+                "şey": 22
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "maw",
+            "_analyzed_word_count": 920,
+            "_unique_word_count": 284,
+            "_top_ten_words": {
+                "bu": 31,
+                "ben": 27,
+                "sen": 22,
+                "kafa": 19,
+                "sokak": 18,
+                "para": 17,
+                "olmak": 16,
+                "gelmek": 14,
+                "niçin": 13,
+                "iç": 12
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "kezzo",
+            "_analyzed_word_count": 8424,
+            "_unique_word_count": 2059,
+            "_top_ten_words": {
+                "bu": 162,
+                "olmak": 120,
+                "ben": 117,
+                "bir": 101,
+                "var": 89,
+                "her": 77,
+                "sen": 73,
+                "o": 71,
+                "yok": 67,
+                "demek": 63
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "uur",
+            "_analyzed_word_count": 2395,
+            "_unique_word_count": 671,
+            "_top_ten_words": {
+                "keçiören": 83,
+                "olmak": 61,
+                "sen": 60,
+                "biz": 53,
+                "bu": 47,
+                "kafa": 43,
+                "ben": 39,
+                "çukur": 33,
+                "ne": 26,
+                "dem": 25
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "yung ouzo",
+            "_analyzed_word_count": 1519,
+            "_unique_word_count": 448,
+            "_top_ten_words": {
+                "hep": 60,
+                "peki": 48,
+                "ben": 45,
+                "ayran": 39,
+                "demek": 33,
+                "yok": 24,
+                "kafa": 23,
+                "şimdi": 21,
+                "el": 19,
+                "süzülmek": 19
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "mrf",
+            "_analyzed_word_count": 9785,
+            "_unique_word_count": 1933,
+            "_top_ten_words": {
+                "ben": 225,
+                "bu": 204,
+                "olmak": 173,
+                "yol": 163,
+                "yok": 127,
+                "vermek": 118,
+                "her": 100,
+                "biz": 94,
+                "sen": 92,
+                "gelmek": 90
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "cartel,cartel (tr)",
+            "_analyzed_word_count": 2135,
+            "_unique_word_count": 754,
+            "_top_ten_words": {
+                "demek": 43,
+                "bu": 42,
+                "biz": 41,
+                "cartel": 37,
+                "sen": 37,
+                "bir": 34,
+                "olmak": 34,
+                "die": 29,
+                "para": 28,
+                "und": 27
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "erci e",
+            "_analyzed_word_count": 4397,
+            "_unique_word_count": 1018,
+            "_top_ten_words": {
+                "ben": 151,
+                "sen": 129,
+                "bir": 127,
+                "gelmek": 126,
+                "bu": 114,
+                "olmak": 75,
+                "hadi": 60,
+                "hep": 49,
+                "ti": 48,
+                "çok": 45
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "karakan",
+            "_analyzed_word_count": 3169,
+            "_unique_word_count": 916,
+            "_top_ten_words": {
+                "ben": 79,
+                "gelmek": 67,
+                "olmak": 59,
+                "sen": 57,
+                "bu": 56,
+                "ne": 50,
+                "bir": 49,
+                "yok": 48,
+                "ev": 44,
+                "ses": 40
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sirhot",
+            "_analyzed_word_count": 2456,
+            "_unique_word_count": 791,
+            "_top_ten_words": {
+                "olmak": 61,
+                "sen": 58,
+                "her": 53,
+                "kopmak": 49,
+                "ben": 46,
+                "bu": 38,
+                "etmek": 32,
+                "gece": 29,
+                "göz": 28,
+                "hep": 25
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sahtiyan",
+            "_analyzed_word_count": 9873,
+            "_unique_word_count": 2461,
+            "_top_ten_words": {
+                "ben": 228,
+                "olmak": 221,
+                "sen": 186,
+                "bu": 144,
+                "gelmek": 107,
+                "bir": 102,
+                "yok": 85,
+                "her": 85,
+                "para": 83,
+                "o": 75
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "ramiz",
+            "_analyzed_word_count": 2537,
+            "_unique_word_count": 715,
+            "_top_ten_words": {
+                "ben": 92,
+                "bu": 89,
+                "gibi": 61,
+                "bir": 41,
+                "biz": 38,
+                "sen": 37,
+                "çok": 35,
+                "mi": 34,
+                "etmek": 32,
+                "olmak": 31
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "sancak",
+            "_analyzed_word_count": 14952,
+            "_unique_word_count": 1696,
+            "_top_ten_words": {
+                "sen": 483,
+                "ben": 473,
+                "olmak": 279,
+                "bu": 277,
+                "bir": 274,
+                "o": 197,
+                "gelmek": 188,
+                "yok": 182,
+                "yine": 164,
+                "ne": 156
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "taladro",
+            "_analyzed_word_count": 25956,
+            "_unique_word_count": 2981,
+            "_top_ten_words": {
+                "sen": 824,
+                "ben": 763,
+                "bir": 660,
+                "bu": 486,
+                "olmak": 407,
+                "ne": 274,
+                "o": 273,
+                "göz": 258,
+                "gelmek": 257,
+                "aşk": 224
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "canfeza",
+            "_analyzed_word_count": 16824,
+            "_unique_word_count": 2705,
+            "_top_ten_words": {
+                "sen": 625,
+                "ben": 592,
+                "bir": 398,
+                "olmak": 354,
+                "bu": 304,
+                "var": 160,
+                "o": 154,
+                "ne": 149,
+                "gelmek": 136,
+                "aşk": 125
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "bedo",
+            "_analyzed_word_count": 323,
+            "_unique_word_count": 132,
+            "_top_ten_words": {
+                "kafa": 13,
+                "e": 12,
+                "ileri": 12,
+                "taraf": 12,
+                "ay": 12,
+                "yok": 10,
+                "ben": 8,
+                "bu": 8,
+                "yol": 8,
+                "girmek": 6
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "vio",
+            "_analyzed_word_count": 909,
+            "_unique_word_count": 416,
+            "_top_ten_words": {
+                "bu": 23,
+                "olmak": 17,
+                "artık": 13,
+                "yeni": 12,
+                "iç": 11,
+                "kendi": 11,
+                "sen": 11,
+                "ben": 11,
+                "yok": 10,
+                "zehir": 10
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "istanbul attack",
+            "_analyzed_word_count": 2374,
+            "_unique_word_count": 830,
+            "_top_ten_words": {
+                "sallamak": 59,
+                "ben": 52,
+                "bu": 50,
+                "sen": 37,
+                "bakmak": 34,
+                "olmak": 33,
+                "hadi": 32,
+                "i̇stanbul": 28,
+                "biz": 27,
+                "el": 26
+            }
+        },
+        {
+            "_type": "artist_stats",
+            "_artist_name": "koksvl,kök$vl",
+            "_analyzed_word_count": 2699,
+            "_unique_word_count": 647,
+            "_top_ten_words": {
+                "ay": 78,
+                "şen": 72,
+                "gelmek": 68,
+                "bu": 68,
+                "şener": 52,
+                "az": 51,
+                "olmak": 49,
+                "ben": 42,
+                "ey": 40,
+                "almak": 34
+            }
+        }
+    ]
+}
