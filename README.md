@@ -35,7 +35,7 @@ As a default, both modes are run:
 
     $ python main.py
      
-Either of the modes can be run seperately as well. (*-l* parameter states the lyrics scrape, *-a* parameter states the lyrics analyze)
+Either of the modes can be run seperately as well. (**-l** parameter states the lyrics scrape, **-a** parameter states the lyrics analyze)
 
     $ python main.py [-l] [-a]
     
