@@ -4854,7 +4854,6 @@ let images = [],
                     y[yValue] = []
                 }
                 for (const value of y[yValue]) {
-                    console.log(value);
                     if (Math.abs(value - xValue) < distanceLimit) {
                         if (yCounter % 2 === 1) {
                             yValue += (yCoefficient * yCounter)
@@ -4972,7 +4971,13 @@ let itemClick = (evt) => {
         doughnutImage.style.position = 'absolute';
         doughnutImage.style.height = imgHeight + 'px';
         doughnutImage.style.width = imgHeight + 'px';
-        doughnutImage.src = `assets/images/${label}.png`
+
+        let low = label.split(' ').map((value, index) => {
+            return value.toLowerCase()
+        });
+        let name = low.join(' ');
+
+        doughnutImage.src = `assets/images/${name}.png`
         doughnutImage.style.marginTop = (height / 2) - (imgHeight) - 8 + 'px';
         doughnutImage.style.marginLeft = (width / 2) - (imgHeight / 2) + 'px';
         artistName.style.display = 'block';
