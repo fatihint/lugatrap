@@ -4820,7 +4820,7 @@ let images = [],
     datasets = [],
     y = {};
 
-(setStats = (stats, limit=0, ratio=null) => {
+(setStats = (stats, limit=0, distance=240, co=3, ratio=null) => {
     datasets = [];
     images = [];
     y = {};
@@ -4831,18 +4831,11 @@ let images = [],
             top_ten = element._top_ten_words,
             analyzed = element._analyzed_word_count,
             yCounter = 1,
-            distanceLimit = 0,
-            yCoefficient = 3;
-
-        if (ratio) {
-            distanceLimit = 1.5
-        } else {
-            distanceLimit = 240
-        }
+            yCoefficient = co,
+            distanceLimit = distance;
 
         if (ratio) {
             xValue = ((xValue / analyzed) * 100).toFixed(2);
-            yCoefficient = 0.4
             yValue = 3
         }  
         
@@ -4860,7 +4853,8 @@ let images = [],
                 if (!(yValue in y)) {
                     y[yValue] = []
                 }
-                y[yValue].forEach((value) => {
+                for (const value of y[yValue]) {
+                    console.log(value);
                     if (Math.abs(value - xValue) < distanceLimit) {
                         if (yCounter % 2 === 1) {
                             yValue += (yCoefficient * yCounter)
@@ -4869,8 +4863,9 @@ let images = [],
                         }
                         flag = false;
                         yCounter++;
+                        break;
                     }
-                });
+                }
                 if (flag) break;
             }          
 
@@ -5135,7 +5130,7 @@ fttButton.addEventListener('click', () => {
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
     graphDesc.innerHTML = 'İlk 10000 kelimedeki eşsiz kelime sayısı karşılaştırması.';
-    setStats(fttStats, 10000);
+    setStats(fttStats, 10000, 100, 1.2);
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
         ticks: {
@@ -5149,6 +5144,13 @@ fttButton.addEventListener('click', () => {
             fontFamily: 'Helvetica',
             padding: 10
         }
+    }];
+    lugatrapChart.options.scales.yAxes = [{
+        ticks: {
+            suggestedMin: 0,
+            suggestedMax: 20
+        },
+        display: false
     }];
     lugatrapChart.update();
     if (donutChart) {
@@ -5167,7 +5169,7 @@ ratioButton.addEventListener('click', () => {
     topTenTitle.style.display = 'none';
     graphDesc.style.display = 'block';
     graphDesc.innerHTML = 'Eşsiz kelime sayısının, analiz edilen toplam kelime sayısına oranı karşılaştırması.';
-    setStats(ratioStats, 5000, 'ratio');
+    setStats(ratioStats, 5000, 1.2, 0.4, 'ratio');
     lugatrapChart.data.datasets = datasets;
     lugatrapChart.options.scales.xAxes = [{
         ticks: {
