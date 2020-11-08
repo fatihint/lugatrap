@@ -3,7 +3,7 @@ Vocabulary investigation of turkish rap musicians.
 
 See the results and graphs generated here: https://fatihint.github.io/lugatrap
 
-Read the blog post about the investigation: https://fatihintek.in/turkce-rapte-kelime-dagarcigi
+Read the blog post about the investigation: https://fatihintek.in/posts/turkce-rapte-kelime-dagarcigi
 
 ## Configuration
 
